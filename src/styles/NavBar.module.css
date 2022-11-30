@@ -1,0 +1,9 @@
+.NavLink{
+    color: white;
+    text-decoration: none;
+}
+
+.Active{
+    color: darkblue; 
+    text-decoration: none;
+}
