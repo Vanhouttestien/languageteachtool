@@ -1,10 +1,13 @@
-import axios from "axios";
 import React, { useState } from "react";
+import axios from "axios";
 import { Form, Button, Col, Row, Container, Alert } from "react-bootstrap";
 import { useHistory } from "react-router-dom";
+import { useSetCurrentUser } from "../../contexts/CurrentUserContext";
+
 
 
 const SignInForm = () => {
+  const setCurrentUser = useSetCurrentUser();
 
   const [signInData, setSignInData] = useState({
     username: "",
@@ -27,7 +30,8 @@ const SignInForm = () => {
   const handleSubmit = async (event) => {
     event.preventDefault();
     try {
-      await axios.post("/dj-rest-auth/login/", signInData);
+      const {data} = await axios.post("/dj-rest-auth/login/", signInData)
+      setCurrentUser(data.user)
       history.push("/");
     } catch (err) {
       setErrors(err.response?.data);
@@ -74,7 +78,7 @@ const SignInForm = () => {
               </Alert>
             ))}
             <Button variant="primary" type="submit">
-              Sign Up
+              Sign In
             </Button>
             {errors.non_field_errors?.map((message, idx) => (
               <Alert key={idx} variant="warning" className="mt-3">
