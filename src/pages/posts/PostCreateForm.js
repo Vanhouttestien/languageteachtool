@@ -1,7 +1,7 @@
 import React from "react";
 import { useRef } from "react";
 import { useState } from "react";
-import { Form, Button } from "react-bootstrap";
+import { Form, Button, Alert } from "react-bootstrap";
 import { useHistory } from "react-router-dom";
 import { axiosReq } from "../../api/axiosDefault";
 
@@ -58,12 +58,13 @@ const PostCreateForm = () => {
     <Form onSubmit={handleSubmit}>
       <Form.Group>
         <Form.Label>upload file</Form.Label>
-        <Form.File
-          id="upload"
-          ref={uploadInput}
-          onChange={handleChangeUpload}
-        />
+        <Form.File id="upload" ref={uploadInput} onChange={handleChangeUpload} />
       </Form.Group>
+      {errors.upload?.map((message, idx) => (
+              <Alert variant="warning" key={idx}>
+                {message}
+              </Alert>
+            ))}
       <Form.Group>
         <Form.Label>Document Title</Form.Label>
         <Form.Control
@@ -74,6 +75,11 @@ const PostCreateForm = () => {
           onChange={handleChange}
         />
       </Form.Group>
+      {errors.title?.map((message, idx) => (
+              <Alert variant="warning" key={idx}>
+                {message}
+              </Alert>
+            ))}
       <Form.Group>
         <Form.Label>Description</Form.Label>
         <Form.Control
@@ -85,6 +91,11 @@ const PostCreateForm = () => {
           onChange={handleChange}
         />
       </Form.Group>
+      {errors.description?.map((message, idx) => (
+              <Alert variant="warning" key={idx}>
+                {message}
+              </Alert>
+            ))}
       {/* <Form.Group controlId="language">
         <Form.Label>Select Norm Type</Form.Label>
         <Form.Control
