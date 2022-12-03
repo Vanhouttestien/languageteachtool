@@ -2,26 +2,25 @@ import React from "react";
 import { Navbar, Nav } from "react-bootstrap";
 import styles from "../styles/NavBar.module.css";
 import { NavLink } from "react-router-dom";
-import { SetCurrentUserContext, useCurrentUser, useSetCurrentUser } from "../contexts/CurrentUserContext";
+import { useCurrentUser, useSetCurrentUser } from "../contexts/CurrentUserContext";
 import axios from "axios";
 import useClickOutsideToggle from "../hooks/useClickOutsideToggle";
 
-const NavBar = () => { 
+const NavBar = () => {
   const currentUser = useCurrentUser();
   const setCurrentUser = useSetCurrentUser();
 
-  const {expanded, setExpanded, ref} = useClickOutsideToggle();
+  const { expanded, setExpanded, ref } = useClickOutsideToggle();
 
-const handleSignOut = async () => {
-  try {
-    await axios.post('dj-rest-auth/logout/');
-    SetCurrentUserContext(null);
-  } catch (err) {
-    console.log(err);
-    
-  }
-}
-
+  const handleSignOut = async () => {
+    try {
+      await axios.post("dj-rest-auth/logout/");
+      setCurrentUser(null);
+    } catch (err) {
+      console.log(err);
+    }
+  };
+  
   const addPostIcon = (
     <NavLink
     className={styles.NavLink}
@@ -41,12 +40,12 @@ const handleSignOut = async () => {
       <NavLink
         className={styles.NavLink}
         to="/"
-        onClick={() => {}}>
+        onClick={handleSignOut}>
         Sign out
       </NavLink>
       <NavLink
         className={styles.NavLink}
-        to={'/profiles/${currentUser?.profile_id}'}>
+        to={`/profiles/${currentUser?.profile_id}`}>
         {currentUser?.username}
       </NavLink>
       </>;
