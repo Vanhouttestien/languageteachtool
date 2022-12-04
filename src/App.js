@@ -6,28 +6,42 @@ import "./api/axiosDefault";
 import SignUpForm from "./pages/auth/SignUpForm";
 import SignInForm from "./pages/auth/SignInForm";
 import PostCreateForm from "./pages/posts/PostCreateForm";
-import { useState } from "react";
 import PostPage from "./pages/posts/PostPage";
-
+import PostsPage from "./pages/posts/PostsPage";
+import { useSetCurrentUser } from "./contexts/CurrentUserContext";
 
 function App() {
+  const currentUser = useSetCurrentUser();
+  const profile_id = currentUser?.profile_id || "";
 
   return (
-   
-        <div className={styles.App}>
-          <NavBar />
-          <Container className={styles.Main}>
-            <Switch>
-              <Route exact path="/" render={() => <h1>Home page</h1>} />
-              <Route exact path="/signin" render={() => <SignInForm />} />
-              <Route exact path="/signup" render={() => <SignUpForm />} />
-              <Route exact path="/posts/create" render={() => <PostCreateForm />} />
-              <Route exact path="/posts/:id" render={() => <PostPage />} />
-              <Route render={() => <p>Page not found</p>} />
-            </Switch>
-          </Container>
-        </div>
-      
+    <div className={styles.App}>
+      <NavBar />
+      <Container className={styles.Main}>
+        <Switch>
+          <Route
+            exact
+            path="/"
+            render={() => <PostsPage message="No results are found." />}
+          />
+          <Route
+            exact
+            path="/saved"
+            render={() => (
+              <PostsPage
+                message="No results are found."
+                filter={`saved_posts__owner__profile=${profile_id}&ordering=-saved_posts__created_at&`}
+              />
+            )}
+          />
+          <Route exact path="/signin" render={() => <SignInForm />} />
+          <Route exact path="/signup" render={() => <SignUpForm />} />
+          <Route exact path="/posts/create" render={() => <PostCreateForm />} />
+          <Route exact path="/posts/:id" render={() => <PostPage />} />
+          <Route render={() => <p>Page not found</p>} />
+        </Switch>
+      </Container>
+    </div>
   );
 }
 

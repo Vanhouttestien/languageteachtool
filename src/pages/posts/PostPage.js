@@ -1,6 +1,7 @@
-import React, { useEffect, useState } from 'react'
+ import React, { useEffect, useState } from 'react'
 import { useParams } from 'react-router-dom'
 import { axiosReq } from '../../api/axiosDefault';
+import Post from './Post';
 
 const PostPage = () => {
     const { id } = useParams();
@@ -22,7 +23,11 @@ const PostPage = () => {
     }, [id])
 
   return (
-    <div>PostPage</div>
+    <>
+
+        <Post {...post.results[0]} setPosts={setPost} postPage />
+    </>
+    
   )
 }
 

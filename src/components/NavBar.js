@@ -34,8 +34,8 @@ const NavBar = () => {
    <NavLink
         className={styles.NavLink}
         activeClassName={styles.Active}
-        to="/feed">
-        feed
+        to="/saved">
+        Saved posts
       </NavLink>
       <NavLink
         className={styles.NavLink}
