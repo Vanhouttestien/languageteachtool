@@ -3,7 +3,7 @@ import { useParams } from 'react-router-dom'
 import { axiosReq } from '../../api/axiosDefault';
 import Post from './Post';
 
-const PostPage = () => {
+function PostPage() {
     const { id } = useParams();
     const [post, setPost] = useState({results: [] });
 
@@ -24,7 +24,6 @@ const PostPage = () => {
 
   return (
     <>
-
         <Post {...post.results[0]} setPosts={setPost} postPage />
     </>
     

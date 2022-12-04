@@ -37,6 +37,7 @@ const NavBar = () => {
         to="/saved">
         Saved posts
       </NavLink>
+      {currentUser && addPostIcon}
       <NavLink
         className={styles.NavLink}
         to="/"
@@ -44,9 +45,9 @@ const NavBar = () => {
         Sign out
       </NavLink>
       <NavLink
-        className={styles.NavLink}
+        className={styles.Welcome}
         to={`/profiles/${currentUser?.profile_id}`}>
-        {currentUser?.username}
+        Welcome, {currentUser?.username}
       </NavLink>
       </>;
   const loggedOutIcons = (
@@ -71,7 +72,7 @@ const NavBar = () => {
     <Navbar
       expanded = {expanded}
       className={styles.NavBar}
-      bg="primary"
+      bg="dark"
       variant="dark"
       expand="md"
       fixed="top"
@@ -79,7 +80,6 @@ const NavBar = () => {
       <NavLink to="/">
         <Navbar.Brand href="#home">React-Bootstrap</Navbar.Brand>
       </NavLink>
-      {currentUser && addPostIcon}
       <Navbar.Toggle ref={ref} aria-controls="basic-navbar-nav" />
       <Navbar.Collapse onClick={() => setExpanded(!expanded)} id="basic-navbar-nav">
         <Nav className="ml-auto text-left">

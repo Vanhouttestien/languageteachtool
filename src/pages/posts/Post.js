@@ -29,50 +29,49 @@ const Post = (props) => {
   const currentUser = useCurrentUser();
   const is_owner = currentUser?.username === owner;
 
-  const handleSavePost = async () => {
-    try {
-      const { data } = await axiosRes.post("/savedposts/", { post: id });
-      setPosts((prevPosts) => ({
-        ...prevPosts,
-        results: prevPosts.results.map((post) => {
-          return post.id === id
-            ? {
-                ...post,
-                save_post_count: post.save_post_count + 1,
-                save_post_id: data.id,
-              }
-            : post;
-        }),
-      }));
-    } catch (err) {
-      console.log(err);
-    }
-  };
+  // const handleSavePost = async () => {
+  //   try {
+  //     const { data } = await axiosRes.post("/savedposts/", { post: id });
+  //     setPosts((prevPosts) => ({
+  //       ...prevPosts,
+  //       results: prevPosts.results.map((post) => {
+  //         return post.id === id
+  //           ? {
+  //               ...post,
+  //               save_post_count: post.save_post_count + 1,
+  //               save_post_id: data.id,
+  //             }
+  //           : post;
+  //       }),
+  //     }));
+  //   } catch (err) {
+  //     console.log(err);
+  //   }
+  // };
 
-  const handleUnSavePost = async () => {
-    try {
-      await axiosRes.delete(`/savedposts/${saved_post_id}/`);
-      setPosts((prevPosts) => ({
-        ...prevPosts,
-        results: prevPosts.results.map((post) => {
-          return post.id === id
-            ? { ...post, saved_post_count: post.save_post_count - 1, saved_post_id: null }
-            : post;
-        }),
-      }));
-    } catch (err) {
-      console.log(err);
-    }
-  };
+  // const handleUnSavePost = async () => {
+  //   try {
+  //     await axiosRes.delete(`/savedposts/${saved_post_id}/`);
+  //     setPosts((prevPosts) => ({
+  //       ...prevPosts,
+  //       results: prevPosts.results.map((post) => {
+  //         return post.id === id
+  //           ? { ...post, saved_post_count: post.save_post_count - 1, saved_post_id: null }
+  //           : post;
+  //       }),
+  //     }));
+  //   } catch (err) {
+  //     console.log(err);
+  //   }
+  // };
 
   return (
     <Card style={{ width: "18rem" }}>
-      <Card.Img variant="top" src="holder.js/100px180?text=Image cap" />
       <Card.Body>
         <Card.Title>
           <span>{title}</span>
           <span>{owner}</span>
-          <span className={styles.PostBar}>
+          {/* <span className={styles.PostBar}>
             {is_owner ? (
               <OverlayTrigger
                 placement="top"
@@ -100,7 +99,7 @@ const Post = (props) => {
             )}
             {saved_post_count}
           </span>
-          {is_owner && postPage && "..."}
+          {is_owner && postPage && "..."} */}
         </Card.Title>
         <Card.Text>{description}</Card.Text>
       </Card.Body>

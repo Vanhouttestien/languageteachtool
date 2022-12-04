@@ -1,7 +1,11 @@
 .Save {
-    color: #f85032;
+    color: darkblue;
   }
 
 .SaveOutline:hover {
-    color: #f85032;
+    color: darkblue;
+  }
+
+  .Post{
+    text-align: center;
   }

@@ -22,17 +22,9 @@ function App() {
           <Route
             exact
             path="/"
-            render={() => <PostsPage message="No results are found." />}
-          />
-          <Route
-            exact
-            path="/saved"
-            render={() => (
-              <PostsPage
-                message="No results are found."
-                filter={`saved_posts__owner__profile=${profile_id}&ordering=-saved_posts__created_at&`}
-              />
-            )}
+            render={() => 
+              <p>Page not found</p>
+            }
           />
           <Route exact path="/signin" render={() => <SignInForm />} />
           <Route exact path="/signup" render={() => <SignUpForm />} />

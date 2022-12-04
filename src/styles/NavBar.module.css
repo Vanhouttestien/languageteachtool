@@ -1,9 +1,30 @@
+@import url('https://fonts.googleapis.com/css2?family=Roboto+Mono:wght@300&display=swap');
+
 .NavLink{
     color: white;
     text-decoration: none;
+    margin-left: 20px;
+    font-family: 'Roboto Mono', monospace;
+    font-size: 20px;
+}
+
+.Welcome{
+    color: white;
+    text-decoration: none;
+    margin-left: 30px;
+    font-family: 'Roboto Mono', monospace;
+    font-size: 20px;
+    font-style: italic;
 }
 
 .Active{
-    color: darkblue; 
     text-decoration: none;
+    color: white;
+    text-decoration-line: line-through;
+}
+
+.NavLink:hover{
+    color: whitesmoke;
+    text-decoration: none;
+    text-decoration-line: line-through;
 }
