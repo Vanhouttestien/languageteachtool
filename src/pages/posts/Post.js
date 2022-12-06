@@ -10,6 +10,7 @@ import {
   ListGroup,
   ListGroupItem,
   OverlayTrigger,
+  Row,
   Tooltip,
 } from "react-bootstrap";
 import { axiosRes } from "../../api/axiosDefault";
@@ -38,7 +39,7 @@ const Post = (props) => {
   const history = useHistory();
 
   const handleEdit = async () => {
-    history.push("/posts/${id}/edit");
+    history.push(`/posts/${id}/edit`);
   };
 
   const handleDelete = async () => {
@@ -87,62 +88,37 @@ const Post = (props) => {
   // };
 
   return (
-      <Card className={styles.Card}>
-        <Card.Body>
-          <Card.Title>
-            <span>{title} </span>
-            <span>{owner}</span>
-            <span>
-              {is_owner && postPage && (
-                <MoreDropdown
-                  handleEdit={handleEdit}
-                  handleDelete={handleDelete}
-                />
-              )}{" "}
-            </span>
-            <Card.Subtitle className="mb-2 text-muted">{updated_at}</Card.Subtitle>
-            
-            {/* <span className={styles.PostBar}>
-            {is_owner ? (
-              <OverlayTrigger
-                placement="top"
-                overlay={<Tooltip>You can't like your own post!</Tooltip>}
-              >
-                <i className="fa-solid fa-floppy-disk" />
-              </OverlayTrigger>
-            ) : saved_post_id ? (
-              <span onClick={handleUnSavePost}>
-                <i className={`fa-solid fa-floppy-disk ${styles.Save}`} />
-              </span>
-            ) : currentUser ? (
-              <span onClick={handleSavePost}>
-                <i
-                  className={`fa-solid fa-floppy-disk ${styles.SaveOutline}`}
-                />
-              </span>
-            ) : (
-              <OverlayTrigger
-                placement="top"
-                overlay={<Tooltip>Log in to like posts!</Tooltip>}
-              >
-                <i className="fa-solid fa-floppy-disk" />
-              </OverlayTrigger>
-            )}
-            {saved_post_count}
-          </span> */}
-          </Card.Title>
-          <Card.Text>{description}</Card.Text>
-        </Card.Body>
-        <ListGroup className="list-group-flush">
-          <ListGroupItem>Language: {language}</ListGroupItem>
-          <ListGroupItem>Age group: {age}</ListGroupItem>
-          <ListGroupItem>Level: {level}</ListGroupItem>
-          <ListGroupItem>Created at: {created_at}</ListGroupItem>
-        </ListGroup>
-        <Card.Body>
-          <Button>See details</Button>
-        </Card.Body>
-      </Card>
+    <Container className={styles.Card}>
+      <Row className={styles.TitleRow}>
+        <Col xs={12} md={8}>
+          <div className={styles.CardTitle}>{title}</div>
+          <div>{owner}</div>
+        </Col>
+        <Col xs={6} md={4} className="d-flex align-top">
+          {is_owner && postPage && (
+            <MoreDropdown handleEdit={handleEdit} handleDelete={handleDelete} />
+          )}
+        </Col>
+      </Row>
+      <Row className={styles.Description}>
+        <Col xs={5}><span className={styles.DescriptionItems}>description:</span> 
+        <br></br>{description}</Col>
+        <Col xs={5}>
+          <Container>
+            <Row >
+              <span className={styles.DescriptionItems}>Language: </span> {language}
+            </Row>
+            <Row><span className={styles.DescriptionItems}>Age group:</span> {age}</Row>
+            <Row><span className={styles.DescriptionItems}>Level:</span> {level}</Row>
+            <Row><span className={styles.DescriptionItems}>created at:</span> {created_at}</Row>
+            <Row><span className={styles.DescriptionItems}>Last update:</span> {updated_at}</Row>
+          </Container>
+        </Col>
+        <Col className="d-flex align-middle">
+          <Button className={styles.Button}>See details</Button>
+        </Col>
+      </Row>
+    </Container>
   );
 };
 

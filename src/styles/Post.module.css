@@ -1,24 +1,68 @@
-.Save {
+@import url('https://fonts.googleapis.com/css2?family=Lato&family=Playfair+Display&family=Roboto+Mono:wght@300&family=Work+Sans:wght@300&display=swap'); 
+
+/* .Save {
   color: darkblue;
 }
 
 .SaveOutline:hover {
   color: darkblue;
-}
+} */
 
 .Post {
   text-align: center;
 }
 
 .Card{
-  border: 1px solid black;
-  padding: 10px;
-  width:100%;
-  margin-top: 30px;
-
-
+  box-shadow: 10px 10px 10px;
+  margin-bottom: 18rem;
+  border-radius: 20px; 
 }
 
-.Card:hover{
-  box-shadow: 5px 10px #888888;
+.TitleRow{
+  background-color:  #D5E6E3;
+  border-radius: 20px 20px 0px 0px;
 }
+
+.CardTitle{
+  font-family: lato;
+  font-size: 2.5rem;
+  text-transform: uppercase;
+}
+
+
+.Button {
+  background-color: #36837a;
+  color: white;
+	align-self: center;
+	border-color: transparent;
+	padding: 5px 15px;
+	min-width: 100px;
+  }
+  
+  .Button:hover {
+	opacity: 0.8;
+	border-color: transparent;
+	cursor: pointer;
+  }
+  
+  .Button:hover:active {
+	background-color: #1e4f49 !important;
+  }
+  
+  .Button:active {
+	background-color: #36837a !important;
+  }
+  
+  .Button:focus {
+	background-color: #36837a;
+  }
+
+  .Description {
+    font-family: 'Work Sans', monospace;
+    font-size: 16px;
+    padding: 50px 0px ;
+  }
+
+  .DescriptionItems{
+    font-weight: bolder;
+  }

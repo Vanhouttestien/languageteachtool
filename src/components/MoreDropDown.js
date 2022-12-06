@@ -1,6 +1,6 @@
 import React from "react";
 import Dropdown from "react-bootstrap/Dropdown";
-// import styles from "../styles/MoreDropdown.module.css";
+import styles from "../styles/MoreDropdown.module.css";
 
 const Settings = React.forwardRef(({ onClick }, ref) => (
   <i
@@ -15,7 +15,7 @@ const Settings = React.forwardRef(({ onClick }, ref) => (
 
 export const MoreDropdown = ({ handleEdit, handleDelete }) => {
   return (
-    <Dropdown className="ml-auto" drop="left">
+    <Dropdown className="ml-auto align-items-md-end" drop="left">
       <Dropdown.Toggle as={Settings} />
 
       <Dropdown.Menu
@@ -26,13 +26,14 @@ export const MoreDropdown = ({ handleEdit, handleDelete }) => {
           onClick={handleEdit}
           aria-label="edit"
         >
-          <i className="fa-solid fa-pen">Edit</i>
+          <i className="fa-solid fa-pen" >Edit</i>
         </Dropdown.Item>
         <Dropdown.Item
           onClick={handleDelete}
           aria-label="delete"
         >
-          <i className="fa-solid fa-trash">Delete</i>
+          <span className={styles.DropdownItem}><i className="fa-solid fa-trash"  >Delete</i></span>
+
         </Dropdown.Item>
       </Dropdown.Menu>
     </Dropdown>

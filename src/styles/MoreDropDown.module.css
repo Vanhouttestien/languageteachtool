@@ -1,0 +1,8 @@
+.DropdownItem{
+    color: white;
+}
+
+.DropdownItem:hover{
+    font-size: larger;
+    color: #d5E6E3;
+}

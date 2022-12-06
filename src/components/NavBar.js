@@ -1,5 +1,5 @@
 import React from "react";
-import { Navbar, Nav } from "react-bootstrap";
+import { Navbar, Nav, Badge } from "react-bootstrap";
 import styles from "../styles/NavBar.module.css";
 import { NavLink } from "react-router-dom";
 import { useCurrentUser, useSetCurrentUser } from "../contexts/CurrentUserContext";
@@ -26,7 +26,7 @@ const NavBar = () => {
     className={styles.NavLink}
     activeClassName={styles.Active}
     to="/posts/create">
-    Add material
+    Share material
   </NavLink>
 
   )
@@ -47,7 +47,7 @@ const NavBar = () => {
       <NavLink
         className={styles.Welcome}
         to={`/profiles/${currentUser?.profile_id}`}>
-        Welcome, {currentUser?.username}
+       <Badge variant="secondary">Welcome,{currentUser?.username}</Badge>
       </NavLink>
       </>;
   const loggedOutIcons = (
