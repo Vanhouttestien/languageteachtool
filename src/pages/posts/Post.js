@@ -2,13 +2,19 @@ import React from "react";
 import styles from "../../styles/Post.module.css";
 import { useCurrentUser } from "../../contexts/CurrentUserContext";
 import {
+  Button,
   Card,
+  CardDeck,
+  Col,
+  Container,
   ListGroup,
   ListGroupItem,
   OverlayTrigger,
   Tooltip,
 } from "react-bootstrap";
 import { axiosRes } from "../../api/axiosDefault";
+import { useHistory } from "react-router-dom";
+import { MoreDropdown } from "../../components/MoreDropDown";
 
 const Post = (props) => {
   const {
@@ -20,6 +26,7 @@ const Post = (props) => {
     age,
     level,
     created_at,
+    updated_at,
     postPage,
     saved_post_count,
     saved_post_id,
@@ -28,6 +35,20 @@ const Post = (props) => {
 
   const currentUser = useCurrentUser();
   const is_owner = currentUser?.username === owner;
+  const history = useHistory();
+
+  const handleEdit = async () => {
+    history.push("/posts/${id}/edit");
+  };
+
+  const handleDelete = async () => {
+    try {
+      await axiosRes.delete(`/posts/${id}/`);
+      history.goBack();
+    } catch (err) {
+      console.log(err);
+    }
+  };
 
   // const handleSavePost = async () => {
   //   try {
@@ -66,12 +87,22 @@ const Post = (props) => {
   // };
 
   return (
-    <Card style={{ width: "18rem" }}>
-      <Card.Body>
-        <Card.Title>
-          <span>{title}</span>
-          <span>{owner}</span>
-          {/* <span className={styles.PostBar}>
+      <Card className={styles.Card}>
+        <Card.Body>
+          <Card.Title>
+            <span>{title} </span>
+            <span>{owner}</span>
+            <span>
+              {is_owner && postPage && (
+                <MoreDropdown
+                  handleEdit={handleEdit}
+                  handleDelete={handleDelete}
+                />
+              )}{" "}
+            </span>
+            <Card.Subtitle className="mb-2 text-muted">{updated_at}</Card.Subtitle>
+            
+            {/* <span className={styles.PostBar}>
             {is_owner ? (
               <OverlayTrigger
                 placement="top"
@@ -98,22 +129,20 @@ const Post = (props) => {
               </OverlayTrigger>
             )}
             {saved_post_count}
-          </span>
-          {is_owner && postPage && "..."} */}
-        </Card.Title>
-        <Card.Text>{description}</Card.Text>
-      </Card.Body>
-      <ListGroup className="list-group-flush">
-        <ListGroupItem>Language: {language}</ListGroupItem>
-        <ListGroupItem>Age group: {age}</ListGroupItem>
-        <ListGroupItem>Level: {level}</ListGroupItem>
-        <ListGroupItem>Created at: {created_at}</ListGroupItem>
-      </ListGroup>
-      <Card.Body>
-        <Card.Link href="#">Card Link</Card.Link>
-        <Card.Link href="#">Another Link</Card.Link>
-      </Card.Body>
-    </Card>
+          </span> */}
+          </Card.Title>
+          <Card.Text>{description}</Card.Text>
+        </Card.Body>
+        <ListGroup className="list-group-flush">
+          <ListGroupItem>Language: {language}</ListGroupItem>
+          <ListGroupItem>Age group: {age}</ListGroupItem>
+          <ListGroupItem>Level: {level}</ListGroupItem>
+          <ListGroupItem>Created at: {created_at}</ListGroupItem>
+        </ListGroup>
+        <Card.Body>
+          <Button>See details</Button>
+        </Card.Body>
+      </Card>
   );
 };
 

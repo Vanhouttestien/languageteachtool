@@ -34,8 +34,8 @@ const NavBar = () => {
    <NavLink
         className={styles.NavLink}
         activeClassName={styles.Active}
-        to="/saved">
-        Saved posts
+        to="/findmaterial">
+        Find materials
       </NavLink>
       {currentUser && addPostIcon}
       <NavLink
@@ -78,7 +78,7 @@ const NavBar = () => {
       fixed="top"
     >
       <NavLink to="/">
-        <Navbar.Brand href="#home">React-Bootstrap</Navbar.Brand>
+        <Navbar.Brand>React-Bootstrap</Navbar.Brand>
       </NavLink>
       <Navbar.Toggle ref={ref} aria-controls="basic-navbar-nav" />
       <Navbar.Collapse onClick={() => setExpanded(!expanded)} id="basic-navbar-nav">

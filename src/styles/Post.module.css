@@ -1,11 +1,24 @@
 .Save {
-    color: darkblue;
-  }
+  color: darkblue;
+}
 
 .SaveOutline:hover {
-    color: darkblue;
-  }
+  color: darkblue;
+}
 
-  .Post{
-    text-align: center;
-  }
+.Post {
+  text-align: center;
+}
+
+.Card{
+  border: 1px solid black;
+  padding: 10px;
+  width:100%;
+  margin-top: 30px;
+
+
+}
+
+.Card:hover{
+  box-shadow: 5px 10px #888888;
+}
