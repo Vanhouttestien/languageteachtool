@@ -14,7 +14,7 @@ import {
   Tooltip,
 } from "react-bootstrap";
 import { axiosRes } from "../../api/axiosDefault";
-import { useHistory } from "react-router-dom";
+import { Link, useHistory } from "react-router-dom";
 import { MoreDropdown } from "../../components/MoreDropDown";
 
 const Post = (props) => {
@@ -92,7 +92,7 @@ const Post = (props) => {
       <Row className={styles.TitleRow}>
         <Col xs={12} md={8}>
           <div className={styles.CardTitle}>{title}</div>
-          <div>{owner}</div>
+          <div><Link to={`/profiles/${id}/`}>{owner}</Link></div>
         </Col>
         <Col xs={6} md={4} className="d-flex align-top">
           {is_owner && postPage && (

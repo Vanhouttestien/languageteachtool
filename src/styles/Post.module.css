@@ -8,19 +8,25 @@
   color: darkblue;
 } */
 
+.Jumbotron{
+  background-color:#328985;
+  color: white ;
+}
+
 .Post {
   text-align: center;
 }
 
 .Card{
+  background-color:white;
   box-shadow: 10px 10px 10px;
-  margin-bottom: 18rem;
-  border-radius: 20px; 
+  border-radius: 10px;
+  margin-top: 2rem
 }
 
 .TitleRow{
-  background-color:  #D5E6E3;
-  border-radius: 20px 20px 0px 0px;
+  background-color:#D8ECEB;
+
 }
 
 .CardTitle{
@@ -31,7 +37,6 @@
 
 
 .Button {
-  background-color: #36837a;
   color: white;
 	align-self: center;
 	border-color: transparent;
@@ -39,23 +44,6 @@
 	min-width: 100px;
   }
   
-  .Button:hover {
-	opacity: 0.8;
-	border-color: transparent;
-	cursor: pointer;
-  }
-  
-  .Button:hover:active {
-	background-color: #1e4f49 !important;
-  }
-  
-  .Button:active {
-	background-color: #36837a !important;
-  }
-  
-  .Button:focus {
-	background-color: #36837a;
-  }
 
   .Description {
     font-family: 'Work Sans', monospace;

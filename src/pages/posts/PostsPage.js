@@ -14,32 +14,34 @@ import { axiosReq } from "../../api/axiosDefault";
 import InfiniteScroll from "react-infinite-scroll-component";
 import { fetchMoreData } from "../../utils/utils";
 import { Button, Jumbotron, Row } from "react-bootstrap";
+import FilterPosts from "../../components/FilterPosts";
 
 function PostsPage({ message, filter = "" }) {
   const [posts, setPosts] = useState({ results: [] });
-  const [hasLoaded, setHasLoaded] = useState(false);
-  const { pathname } = useLocation();
+  // const [hasLoaded, setHasLoaded] = useState(false);
+  // const { pathname } = useLocation();
 
-  const [query, setQuery] = useState("");
+  // const [query, setQuery] = useState("");
 
-  useEffect(() => {
-    const fetchPosts = async () => {
-      try {
-        const { data } = await axiosReq.get(`/posts/?${filter}search=${query}`);
-        setPosts(data);
-        setHasLoaded(true);
-      } catch (err) {
-        console.log(err);
-      }
-    };
+  // useEffect(() => {
+  //   const fetchPosts = async () => {
+  //     try {
+  //       const { data } = await axiosReq.get(`/posts/?${filter}search=${query}`);
+  //       setPosts(data);
+  //       setHasLoaded(true);
+  //     } catch (err) {
+  //       console.log(err);
+  //     }
+  //   };
 
-    setHasLoaded(false);
-    const timer = setTimeout(() => {
-      fetchPosts();
-    }, 1000);
-    return () => clearTimeout(timer);
-  }, [filter, query, pathname]);
+  //   setHasLoaded(false);
+  //   const timer = setTimeout(() => {
+  //     fetchPosts();
+  //   }, 1000);
+  //   return () => clearTimeout(timer);
+  // }, [filter, query, pathname]);
 
+  
   return (
     <Container className="">
       <Jumbotron className={styles.Jumbotron}>
@@ -52,18 +54,20 @@ function PostsPage({ message, filter = "" }) {
           <Button variant="primary">Learn more</Button>
         </p>
       </Jumbotron>
-      <Form onSubmit={(event) => event.preventDefault()}>
+      <FilterPosts/>
+      {/* <Form onSubmit={(event) => event.preventDefault()}>
         <span>
           <i className="fa-solid fa-magnifying-glass" />
         </span>
+        <FilterPosts/>
         <Form.Control
           value={query}
           onChange={(event) => setQuery(event.target.value)}
           type="text"
           placeholder="Search Post"
         />
-      </Form>
-      {hasLoaded ? (
+      </Form> */}
+      {/* {hasLoaded ? (
         <>
           {posts.results.length ? (
             <InfiniteScroll
@@ -85,7 +89,7 @@ function PostsPage({ message, filter = "" }) {
         <Container className={appStyles.Content}>
           <Asset spinner />
         </Container>
-      )}
+      )} */}
     </Container>
   );
 }

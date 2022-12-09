@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect } from "react";
 import { Navbar, Nav, Badge } from "react-bootstrap";
 import styles from "../styles/NavBar.module.css";
 import { NavLink } from "react-router-dom";
@@ -7,6 +7,7 @@ import axios from "axios";
 import useClickOutsideToggle from "../hooks/useClickOutsideToggle";
 
 const NavBar = () => {
+
   const currentUser = useCurrentUser();
   const setCurrentUser = useSetCurrentUser();
 
@@ -46,8 +47,8 @@ const NavBar = () => {
       </NavLink>
       <NavLink
         className={styles.Welcome}
-        to={`/profiles/${currentUser?.profile_id}`}>
-       <Badge variant="secondary">Welcome,{currentUser?.username}</Badge>
+        to={`/profiles/${currentUser?.pk}/`}>
+       <Badge variant="secondary">{currentUser?.username}</Badge>
       </NavLink>
       </>;
   const loggedOutIcons = (

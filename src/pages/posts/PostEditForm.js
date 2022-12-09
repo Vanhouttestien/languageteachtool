@@ -10,13 +10,12 @@ import {
   Row,
   Col,
 } from "react-bootstrap";
-import { useHistory, useParams } from "react-router-dom";
+import { Link, useHistory, useParams } from "react-router-dom";
 import { axiosReq } from "../../api/axiosDefault";
 import styles from "../../styles/PostCreateForm.module.css";
 
 function PostEditForm() {
   const [errors, setErrors] = useState({});
-
   const [postData, setPostData] = useState({
     title: "",
     description: "",

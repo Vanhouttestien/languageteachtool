@@ -10,6 +10,10 @@ import PostPage from "./pages/posts/PostPage";
 import PostsPage from "./pages/posts/PostsPage";
 import { useSetCurrentUser } from "./contexts/CurrentUserContext";
 import PostEditForm from "./pages/posts/PostEditForm";
+import ProfilePage from "./pages/profiles/ProfilePage";
+import ProfileEditForm from "./pages/profiles/ProfileEditForm";
+import UserPasswordForm from "./pages/profiles/UserPasswordForm";
+import HomePage from "./pages/Home/HomePage";
 
 function App() {
   const currentUser = useSetCurrentUser();
@@ -20,19 +24,28 @@ function App() {
       <NavBar />
       <Container className={styles.Main}>
         <Switch>
+          <Route exact path="/" render={() => <HomePage />} />
+          <Route exact path="/signin" render={() => <SignInForm />} />
           <Route
             exact
-            path="/"
-            render={() => 
-              <p>Page not found</p>
-            }
+            path="/findmaterial"
+            render={() => <PostsPage message="No results found." />}
           />
-          <Route exact path="/signin" render={() => <SignInForm />} />
-          <Route exact path="/findmaterial" render={() => <PostsPage  message="No results found."/>} />
           <Route exact path="/signup" render={() => <SignUpForm />} />
           <Route exact path="/posts/create" render={() => <PostCreateForm />} />
           <Route exact path="/posts/:id/edit" render={() => <PostEditForm />} />
           <Route exact path="/posts/:id" render={() => <PostPage />} />
+          <Route exact path="/profiles/:id" render={() => <ProfilePage />} />
+          <Route
+            exact
+            path="/profiles/:id/edit"
+            render={() => <ProfileEditForm />}
+          />
+          <Route
+            exact
+            path="/profiles/:id/edit/password"
+            render={() => <UserPasswordForm/>}
+          />
           <Route render={() => <p>Page not found</p>} />
         </Switch>
       </Container>
