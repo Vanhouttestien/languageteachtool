@@ -81,6 +81,9 @@ function ProfileEditForm() {
           <h1>Edit your profile</h1>
         </Container>
       </Jumbotron>
+      <Link to={`/profiles/${id}/edit/password`}>
+        <Button>change password</Button>
+      </Link>
         <Form.Group>
           <Form.Label>occupation</Form.Label>
           <Form.Control
@@ -195,12 +198,11 @@ function ProfileEditForm() {
         <Button variant="success" type="submit">
           Submit
         </Button>
+        <Button
+              onClick={() => history.goBack()}
+            >cancel
+              </Button>
     </Form>
-
-      profile
-      <Link to="/profiles/:id/edit/password">
-        <Button>change password</Button>
-      </Link>
     </>
   );
 }

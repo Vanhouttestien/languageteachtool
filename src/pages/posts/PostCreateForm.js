@@ -148,6 +148,11 @@ function PostCreateForm() {
                 <option value="Russian">Russian</option>
               </Form.Control>
             </Form.Group>
+            {errors.language?.map((message, idx) => (
+          <Alert variant="warning" key={idx}>
+            {message}
+          </Alert>
+        ))}
           </Col>
           <Col>
             <Form.Group>
@@ -165,6 +170,11 @@ function PostCreateForm() {
                 <option value="18+">18+</option>
               </Form.Control>
             </Form.Group>
+            {errors.age?.map((message, idx) => (
+          <Alert variant="warning" key={idx}>
+            {message}
+            </Alert>
+        ))}
           </Col>
           <Col>
             <Form.Group>
@@ -180,11 +190,21 @@ function PostCreateForm() {
                 <option value="Advanced">advanced</option>
               </Form.Control>
             </Form.Group>
+            {errors.level?.map((message, idx) => (
+          <Alert variant="warning" key={idx}>
+            {message}
+            </Alert>
+        ))}
           </Col>
         </Row>
         <Button variant="success" type="submit">
           Submit
         </Button>
+        {errors.non_field_errors?.map((message, idx) => (
+              <Alert key={idx} variant="warning" className="mt-3">
+                {message}
+              </Alert>
+            ))}
       </Container>
     </Form>
   );

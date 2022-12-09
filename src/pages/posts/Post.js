@@ -29,9 +29,7 @@ const Post = (props) => {
     created_at,
     updated_at,
     postPage,
-    saved_post_count,
-    saved_post_id,
-    setPosts,
+    upload,
   } = props;
 
   const currentUser = useCurrentUser();
@@ -50,42 +48,6 @@ const Post = (props) => {
       console.log(err);
     }
   };
-
-  // const handleSavePost = async () => {
-  //   try {
-  //     const { data } = await axiosRes.post("/savedposts/", { post: id });
-  //     setPosts((prevPosts) => ({
-  //       ...prevPosts,
-  //       results: prevPosts.results.map((post) => {
-  //         return post.id === id
-  //           ? {
-  //               ...post,
-  //               save_post_count: post.save_post_count + 1,
-  //               save_post_id: data.id,
-  //             }
-  //           : post;
-  //       }),
-  //     }));
-  //   } catch (err) {
-  //     console.log(err);
-  //   }
-  // };
-
-  // const handleUnSavePost = async () => {
-  //   try {
-  //     await axiosRes.delete(`/savedposts/${saved_post_id}/`);
-  //     setPosts((prevPosts) => ({
-  //       ...prevPosts,
-  //       results: prevPosts.results.map((post) => {
-  //         return post.id === id
-  //           ? { ...post, saved_post_count: post.save_post_count - 1, saved_post_id: null }
-  //           : post;
-  //       }),
-  //     }));
-  //   } catch (err) {
-  //     console.log(err);
-  //   }
-  // };
 
   return (
     <Container className={styles.Card}>
@@ -115,7 +77,7 @@ const Post = (props) => {
           </Container>
         </Col>
         <Col className="d-flex align-middle">
-          <Button className={styles.Button}>See details</Button>
+          <a href={upload}><Button className={styles.Button}>See download</Button></a>
         </Col>
       </Row>
     </Container>

@@ -79,7 +79,7 @@ const NavBar = () => {
       fixed="top"
     >
       <NavLink to="/">
-        <Navbar.Brand>React-Bootstrap</Navbar.Brand>
+        <Navbar.Brand><i></i>The teachers Lounge</Navbar.Brand>
       </NavLink>
       <Navbar.Toggle ref={ref} aria-controls="basic-navbar-nav" />
       <Navbar.Collapse onClick={() => setExpanded(!expanded)} id="basic-navbar-nav">

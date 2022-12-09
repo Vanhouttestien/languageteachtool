@@ -35,7 +35,9 @@ const UserPasswordForm = () => {
   };
 
   useEffect(() => {
-    if (currentUser?.profile_id?.toString() !== id) {
+    console.log(id) 
+    console.log(currentUser.pk)
+    if (currentUser?.pk?.toString() !== id) {
       // redirect user if they are not the owner of this profile
       history.push("/");
     }
@@ -44,7 +46,7 @@ const UserPasswordForm = () => {
   const handleSubmit = async (event) => {
     event.preventDefault();
     try {
-      await axiosRes.post("`/profiles/${id}/edit/password`", userData);
+      await axiosRes.post("/dj-rest-auth/password/change/", userData);
       history.goBack();
     } catch (err) {
       console.log(err);
