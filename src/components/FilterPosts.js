@@ -13,7 +13,6 @@ import Asset from "./Asset";
 function FilterPosts() {
   const [posts, setPosts] = useState({ results: [] });
 
-
   const [filterData, setFilterData] = useState({
     query: "",
     language: "",
@@ -21,12 +20,14 @@ function FilterPosts() {
     level: "",
   });
 
-  const { query, language, age, level} = filterData;
+  const { query, language, age, level } = filterData;
   const [hasLoaded, setHasLoaded] = useState(false);
   useEffect(() => {
     const fetchPosts = async () => {
       try {
-        const { data } = await axiosReq.get(`posts/?search=${query}&age=${age}&level=${level}&language=${language}&owner=`);
+        const { data } = await axiosReq.get(
+          `posts/?search=${query}&age=${age}&level=${level}&language=${language}&owner=`
+        );
         setPosts(data);
         setHasLoaded(true);
       } catch (err) {
@@ -45,30 +46,42 @@ function FilterPosts() {
 
   return (
     <Container className="">
-       <Form onSubmit={(event) => event.preventDefault()}>
-        <Form.Control
-          value={query}
-          onChange={(event) =>{
-            setFilterData({
-              ...filterData,
-              [event.target.name]: event.target.value,
-            })}}
-          name="query"
-          type="text"
-          placeholder="Search Post"
-        />
-        <Row>
+      <Form onSubmit={(event) => event.preventDefault()}>
+        <Form.Group as={Row}>
+          <Form.Label>
+            <i class="fa-solid fa-magnifying-glass"></i>
+          </Form.Label>
           <Col>
+            <Form.Control
+              value={query}
+              onChange={(event) => {
+                setFilterData({
+                  ...filterData,
+                  [event.target.name]: event.target.value,
+                });
+              }}
+              name="query"
+              type="text"
+              placeholder=" Search Post"
+            />
+          </Col>
+          {/* </Form.Group>
+        <Form.Group as={Row}> */}
+          <Form.Label>
+          <i class="fa-solid fa-filter"></i>
+          </Form.Label>
+          <Col className="pr-0">
             <Form.Control
               as="select"
               name="language"
               value={language}
-              onChange={(event) =>{
+              onChange={(event) => {
                 setFilterData({
                   ...filterData,
                   [event.target.name]: event.target.value,
-                })}}
-              >
+                });
+              }}
+            >
               <option value="">Select a language</option>
               <option value="English">English</option>
               <option value="Spanish">Spanish</option>
@@ -84,17 +97,19 @@ function FilterPosts() {
               <option value="Russian">Russian</option>
             </Form.Control>
           </Col>
-          <Col>
+
+          <Col className="pr-0 pl-0">
             <Form.Control
               as="select"
               name="age"
               value={age}
-              onChange={(event) =>{
+              onChange={(event) => {
                 setFilterData({
                   ...filterData,
                   [event.target.name]: event.target.value,
-                })}}
-              >
+                });
+              }}
+            >
               <option value="">select an age group</option>
               <option value="4-7">4-7</option>
               <option value="7-11">7-11</option>
@@ -103,24 +118,26 @@ function FilterPosts() {
               <option value="18+">18+</option>
             </Form.Control>
           </Col>
-          <Col>
+          <Col className="pr-0 pl-0">
             <Form.Control
               as="select"
               name="level"
               value={level}
-              onChange={(event) =>{
+              onChange={(event) => {
                 setFilterData({
                   ...filterData,
                   [event.target.name]: event.target.value,
-                })}}
-              >
+                });
+              }}
+            >
               <option value="">Select a level</option>
               <option value="beginners">beginners</option>
               <option value="intermediate">intermediate</option>
               <option value="advanced">advanced</option>
             </Form.Control>
           </Col>
-        </Row>
+        </Form.Group>
+        >
       </Form>
       {hasLoaded ? (
         <>

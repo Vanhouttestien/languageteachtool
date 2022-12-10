@@ -64,8 +64,9 @@ const Post = (props) => {
     <Container className={styles.Card}>
       <Row className={styles.TitleRow}>
         <Col xs={12} md={8}>
-          <div className={styles.CardTitle}>{title}</div>
-          <div><Link to={`/profiles/${profile_id}`}>{owner}</Link></div> 
+          <div className={styles.CardTitle}> 
+          <Link to={`/posts/${id}`} className={styles.Link}>{title}</Link></div>
+          <div><Link to={`/profiles/${profile_id}`} className={styles.Link}>{owner}</Link></div> 
         </Col>
         <Col xs={6} md={4} className="d-flex align-top">
           {is_owner && postPage && (
