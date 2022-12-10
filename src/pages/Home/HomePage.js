@@ -9,7 +9,7 @@ const HomePage = () => {
   const currentUser = useCurrentUser();
   const loggedIn = <>
    <p>
-          <Link to="/findmaterial"><Button bsStyle="primary">Find materials</Button></Link>
+          <Link to="/findmaterial"><Button variant="primary">Find materials</Button></Link>
         </p>
   </>;
 
@@ -18,13 +18,13 @@ const HomePage = () => {
      <p>To find and share materials you need to be loggedin. Loggin or create an account</p> 
       <Link
         to="/signin">
-          <Button bsStyle="primary"> Sign in</Button>
+          <Button variant="primary"> Sign in</Button>
        
       </Link>
       
       <Link
         to="/signup">
-        <Button bsStyle="primary"> Sign up</Button>
+        <Button variant="primary"> Sign up</Button>
       </Link>
   </>
   return (

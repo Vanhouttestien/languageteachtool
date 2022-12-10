@@ -2,12 +2,14 @@ import React, { useEffect } from "react";
 import { Navbar, Nav, Badge } from "react-bootstrap";
 import styles from "../styles/NavBar.module.css";
 import { NavLink } from "react-router-dom";
-import { useCurrentUser, useSetCurrentUser } from "../contexts/CurrentUserContext";
+import {
+  useCurrentUser,
+  useSetCurrentUser,
+} from "../contexts/CurrentUserContext";
 import axios from "axios";
 import useClickOutsideToggle from "../hooks/useClickOutsideToggle";
 
 const NavBar = () => {
-
   const currentUser = useCurrentUser();
   const setCurrentUser = useSetCurrentUser();
 
@@ -21,49 +23,49 @@ const NavBar = () => {
       console.log(err);
     }
   };
-  
+
   const addPostIcon = (
     <NavLink
-    className={styles.NavLink}
-    activeClassName={styles.Active}
-    to="/posts/create">
-    Share material
-  </NavLink>
-
-  )
-  const loggedInIcons = <>
-   <NavLink
+      className={styles.NavLink}
+      activeClassName={styles.Active}
+      to="/posts/create"
+    >
+      Share material
+    </NavLink>
+  );
+  const loggedInIcons = (
+    <>
+      <NavLink
         className={styles.NavLink}
         activeClassName={styles.Active}
-        to="/findmaterial">
+        to="/findmaterial"
+      >
         Find materials
       </NavLink>
       {currentUser && addPostIcon}
-      <NavLink
-        className={styles.NavLink}
-        to="/"
-        onClick={handleSignOut}>
+      <NavLink className={styles.NavLink} to="/" onClick={handleSignOut}>
         Sign out
       </NavLink>
-      <NavLink
-        className={styles.Welcome}
-        to={`/profiles/${currentUser?.pk}/`}>
-       <Badge variant="secondary">{currentUser?.username}</Badge>
+      <NavLink className={styles.Welcome} to={`/profiles/${currentUser?.pk}/`}>
+        <Badge variant="secondary">{currentUser?.username}</Badge>
       </NavLink>
-      </>;
+    </>
+  );
   const loggedOutIcons = (
     <>
       <NavLink
         className={styles.NavLink}
         activeClassName={styles.Active}
-        to="/signin">
+        to="/signin"
+      >
         Sign in
       </NavLink>
-      
+
       <NavLink
         className={styles.NavLink}
         activeClassName={styles.Active}
-        to="/signup">
+        to="/signup"
+      >
         Sign up
       </NavLink>
     </>
@@ -71,7 +73,7 @@ const NavBar = () => {
 
   return (
     <Navbar
-      expanded = {expanded}
+      expanded={expanded}
       className={styles.NavBar}
       bg="dark"
       variant="dark"
@@ -79,10 +81,15 @@ const NavBar = () => {
       fixed="top"
     >
       <NavLink to="/">
-        <Navbar.Brand><i></i>The teachers Lounge</Navbar.Brand>
+        <Navbar.Brand>
+          The teachers Lounge
+        </Navbar.Brand>
       </NavLink>
-      <Navbar.Toggle ref={ref} aria-controls="basic-navbar-nav" />
-      <Navbar.Collapse onClick={() => setExpanded(!expanded)} id="basic-navbar-nav">
+      <Navbar.Toggle ref={ref} aria-controls="basic-navbar-nav" onClick={() => setExpanded(!expanded)} />
+      <Navbar.Collapse
+        
+        id="basic-navbar-nav"
+      >
         <Nav className="ml-auto text-left">
           <NavLink
             exact
