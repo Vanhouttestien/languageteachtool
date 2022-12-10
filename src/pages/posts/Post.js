@@ -40,16 +40,7 @@ const Post = (props) => {
 
   const handleEdit = async () => {
     history.push(`/posts/${id}/edit`);
-
   };
-
-  function handleClick(event) { 
-    
-    console.log(profile_id)
-    console.log(props)  
-    
-  } 
-
 
   const handleDelete = async () => {
     try {
@@ -69,7 +60,7 @@ const Post = (props) => {
           <div><Link to={`/profiles/${profile_id}`} className={styles.Link}>{owner}</Link></div> 
         </Col>
         <Col xs={6} md={4} className="d-flex align-top">
-          {is_owner && postPage && (
+          {is_owner && (
             <MoreDropdown handleEdit={handleEdit} handleDelete={handleDelete} />
           )}
         </Col>

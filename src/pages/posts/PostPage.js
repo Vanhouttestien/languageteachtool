@@ -12,7 +12,6 @@ function PostPage() {
             try {
                 const {data: post} = await axiosReq.get(`/posts/${id}`)
                 setPost(post)
-                console.log(post)
              } catch (err) {
                 console.log(err)
             }

@@ -22,6 +22,7 @@ function FilterPosts() {
 
   const { query, language, age, level } = filterData;
   const [hasLoaded, setHasLoaded] = useState(false);
+  
   useEffect(() => {
     const fetchPosts = async () => {
       try {

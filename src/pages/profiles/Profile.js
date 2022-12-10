@@ -21,6 +21,8 @@ import ProfilePage from "./ProfilePage";
 
 function Profile() {
   const { id } = useParams();
+ 
+
   const [profileData, setProfileData] = useState({
     owner: "",
     language: "",
@@ -33,12 +35,12 @@ function Profile() {
   const { owner, language, language2, language3, occupation, about_me } =
     profileData;
 
+
   useEffect(() => {
     const fetchProfile = async () => {
       try {
         const { data: profile } = await axiosReq.get(`/profiles/${id}`);
         setProfileData(profile);
-        console.log(profile);
       } catch (err) {
         console.log(err);
       }
@@ -63,19 +65,15 @@ function Profile() {
     }
   };
 
+
   return (
     <>
-      <Container className="row vh-100">
+      <Container className="row pb-5">
         <Card
-          className="card bg-light mb- col-sm-12 my-auto justify-content-center align-items-center "
+          className="card text-dark bg-light mb- col-sm-12 my-auto justify-content-center align-items-center "
           style={{ width: "18rem" }}
         >
           <Card.Body>
-
-
-
-
-
             <span className="float-right">
               {" "}
               {is_owner && ProfilePage && (
@@ -86,7 +84,7 @@ function Profile() {
               )}
             </span>
             <Card.Title>
-              <h2>{owner}</h2>{" "}
+              <h2 className="tx-datext-dark">{owner}</h2>{" "}
             </Card.Title>
             <hr />
             <Card.Text>
@@ -113,7 +111,7 @@ function Profile() {
               </Container>
             </Card.Text>
           </Card.Body>
-        </Card>
+        </Card >
       </Container>
     </>
   );
