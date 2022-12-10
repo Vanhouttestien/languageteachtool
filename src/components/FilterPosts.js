@@ -3,21 +3,15 @@ import React, { useEffect, useState } from "react";
 import Form from "react-bootstrap/Form";
 import Container from "react-bootstrap/Container";
 
-import { Button, Col, Jumbotron, Row } from "react-bootstrap";
+import { Col, Row } from "react-bootstrap";
 import { fetchMoreData } from "../utils/utils";
 import InfiniteScroll from "react-infinite-scroll-component";
 import { axiosReq } from "../api/axiosDefault";
 import Post from "../pages/posts/Post";
+import Asset from "./Asset";
 
-function FilterPosts({ message}) {
+function FilterPosts() {
   const [posts, setPosts] = useState({ results: [] });
-  const [hasLoaded, setHasLoaded] = useState(false);
-
-  // const [query, setQuery] = useState("");
-  // const [age, setAge] = useState("");
-  // const [language, setLanguage] = useState("");
-  // const [level, setLevel] = useState("");
-
 
 
   const [filterData, setFilterData] = useState({
@@ -27,22 +21,8 @@ function FilterPosts({ message}) {
     level: "",
   });
 
-  
-
   const { query, language, age, level} = filterData;
- 
-  // const handleSubmit = async (event) => {
-  //   event.preventDefault();
-  //   try {
-  //     const { data } = await axiosReq.get(`posts/?search=${query}&age=${age}&level=${level}&language=${language}&owner=`);
-  //     console.log(data);
-  //     setPosts(data);
-  //     setHasLoaded(true);
-  //   } catch (err) {
-  //     console.log(err);
-  //   }
-  // };
-
+  const [hasLoaded, setHasLoaded] = useState(false);
   useEffect(() => {
     const fetchPosts = async () => {
       try {
@@ -53,7 +33,6 @@ function FilterPosts({ message}) {
         console.log(err);
       }
     };
-
     setHasLoaded(false);
     const timer = setTimeout(() => {
       fetchPosts();
@@ -63,13 +42,6 @@ function FilterPosts({ message}) {
       clearTimeout(timer);
     };
   }, [filterData]);
-
-  const handleChange = (event) => {
-    setPosts({
-      ...posts,
-      [event.target.name]: event.target.value,
-    });
-  };
 
   return (
     <Container className="">
@@ -149,9 +121,6 @@ function FilterPosts({ message}) {
             </Form.Control>
           </Col>
         </Row>
-        <Button variant="primary" type="submit">
-          Search
-        </Button>
       </Form>
       {hasLoaded ? (
         <>
@@ -165,11 +134,13 @@ function FilterPosts({ message}) {
               next={() => fetchMoreData(posts, setPosts)}
             />
           ) : (
-            <p>no results</p>
+            <p>No results</p>
           )}
         </>
       ) : (
-        <Container></Container>
+        <Container>
+          <Asset spinner />
+        </Container>
       )}
     </Container>
   );
