@@ -59,7 +59,7 @@ const Post = (props) => {
           <Link to={`/posts/${id}`} className={styles.Link}>{title}</Link></div>
           <div><Link to={`/profiles/${profile_id}`} className={styles.Link}>{owner}</Link></div> 
         </Col>
-        <Col xs={6} md={4} className="d-flex align-top">
+        <Col className="d-flex align-top">
           {is_owner && (
             <MoreDropdown handleEdit={handleEdit} handleDelete={handleDelete} />
           )}

@@ -36,7 +36,7 @@ const HomePage = () => {
           Find teaching materials from all over the world in 20 different languages. 
         </p>
         <p>
-          And share your own materials to imporve world wide access. 
+          And share your own materials to improve world wide access. 
         </p>
         {currentUser ? loggedIn : loggedOut}
        

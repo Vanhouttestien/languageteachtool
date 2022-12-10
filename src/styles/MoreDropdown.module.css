@@ -2,6 +2,7 @@
     display: inline-block;
     max-width: 50%;
     padding: 0px;
+    color: black;
   }
   
   .Absolute {
@@ -9,3 +10,9 @@
     right: 0;
     z-index: 99;
   }
+
+i{
+  color: rgb(141, 137, 137);
+  padding: 10px;
+  font-size: 30px;
+}
