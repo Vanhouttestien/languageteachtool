@@ -1,13 +1,21 @@
+@import url('https://fonts.googleapis.com/css2?family=Roboto+Mono:wght@300&display=swap');
+
 .Main { 
 	padding-top: 81px;
+	font-family: 'Roboto Mono', monospace;
+	font-size: 16px;
+    font-weight: 300;
 }
 
 html, body{
 	margin: 0;
 	padding: 0;
     width: 100%;
-    height: 100%;
 	background-color: rgb(66, 71, 71);
 }
 
+h1{
+	font-family: lato;
+	text-transform: uppercase;
+}
 

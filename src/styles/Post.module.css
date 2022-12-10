@@ -1,56 +1,48 @@
-@import url('https://fonts.googleapis.com/css2?family=Lato&family=Playfair+Display&family=Roboto+Mono:wght@300&family=Work+Sans:wght@300&display=swap'); 
+@import url('https://fonts.googleapis.com/css2?family=Lato&family=Playfair+Display&family=Roboto+Mono:wght@300&family=Work+Sans:wght@300&display=swap');
 
-/* .Save {
-  color: darkblue;
-}
-
-.SaveOutline:hover {
-  color: darkblue;
-} */
-
-.Jumbotron{
-  background-color:#328985;
-  color: white ;
+.Jumbotron {
+  background-color: black;
+  color: white;
 }
 
 .Post {
   text-align: center;
 }
 
-.Card{
-  background-color:white;
+.Card {
+  background-color: rgb(255, 249, 249);
   box-shadow: 10px 10px 10px;
   border-radius: 10px;
   margin-top: 2rem
 }
 
-.TitleRow{
-  background-color:#D8ECEB;
+.TitleRow {
+  background-color: #353434;
+  color: white;
 
 }
 
-.CardTitle{
+.CardTitle {
   font-family: lato;
   font-size: 2.5rem;
   text-transform: uppercase;
 }
 
-
 .Button {
   color: white;
-	align-self: center;
-	border-color: transparent;
-	padding: 5px 15px;
-	min-width: 100px;
-  }
-  
+  align-self: center;
+  border-color: transparent;
+  padding: 5px 15px;
+  min-width: 100px;
+}
 
-  .Description {
-    font-family: 'Work Sans', monospace;
-    font-size: 16px;
-    padding: 50px 0px ;
-  }
 
-  .DescriptionItems{
-    font-weight: bolder;
-  }
+.Description {
+  font-family: 'Work Sans', monospace;
+  font-size: 16px;
+  padding: 50px 0px;
+}
+
+.DescriptionItems {
+  font-weight: bolder;
+}

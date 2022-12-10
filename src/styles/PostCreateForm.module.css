@@ -1,5 +1,7 @@
 .Jumbotron{
-    background-color:#328985;
+    background-image: url("https://res.cloudinary.com/ds6jpxpzy/image/upload/e_brightness_hsb:-80/v1670271490/teach_b2qlhj.jpg");
+    background-size: cover;
+    background-position: center; 
     color: white ;
 }
 

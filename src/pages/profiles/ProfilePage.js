@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from 'react'
 import { useParams } from 'react-router-dom'
 import { axiosReq } from '../../api/axiosDefault';
+import Post from '../posts/Post';
 import Profile from './Profile';
 
 function ProfilePage() {

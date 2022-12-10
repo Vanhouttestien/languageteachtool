@@ -3,45 +3,50 @@ import React, { useEffect, useState } from "react";
 import Form from "react-bootstrap/Form";
 import Container from "react-bootstrap/Container";
 
-import { useLocation } from "react-router";
-
 import { Button, Col, Jumbotron, Row } from "react-bootstrap";
 import { fetchMoreData } from "../utils/utils";
 import InfiniteScroll from "react-infinite-scroll-component";
 import { axiosReq } from "../api/axiosDefault";
 import Post from "../pages/posts/Post";
 
-function FilterPosts({ message, filter = "" }) {
+function FilterPosts({ message}) {
   const [posts, setPosts] = useState({ results: [] });
   const [hasLoaded, setHasLoaded] = useState(false);
 
-  const { pathname } = useLocation();
+  // const [query, setQuery] = useState("");
+  // const [age, setAge] = useState("");
+  // const [language, setLanguage] = useState("");
+  // const [level, setLevel] = useState("");
 
-  const [query, setQuery] = useState("");
-  const [language, setLanguage] = useState("");
-  const [age, setAge] = useState("");
-  const [level, setLevel] = useState("");
 
+
+  const [filterData, setFilterData] = useState({
+    query: "",
+    language: "",
+    age: "",
+    level: "",
+  });
+
+  
+
+  const { query, language, age, level} = filterData;
  
-
-  const handleSubmit = async (event) => {
-    event.preventDefault();
-    try {
-      const { data } = await axiosReq.get(
-        `/posts/?age=${age}&level=${level}&language=${language}&save_post__owner__profile=`
-      );
-      console.log(data);
-      setPosts(data);
-      setHasLoaded(true);
-    } catch (err) {
-      console.log(err);
-    }
-  };
+  // const handleSubmit = async (event) => {
+  //   event.preventDefault();
+  //   try {
+  //     const { data } = await axiosReq.get(`posts/?search=${query}&age=${age}&level=${level}&language=${language}&owner=`);
+  //     console.log(data);
+  //     setPosts(data);
+  //     setHasLoaded(true);
+  //   } catch (err) {
+  //     console.log(err);
+  //   }
+  // };
 
   useEffect(() => {
     const fetchPosts = async () => {
       try {
-        const { data } = await axiosReq.get(`/posts/?${filter}search=${query}`);
+        const { data } = await axiosReq.get(`posts/?search=${query}&age=${age}&level=${level}&language=${language}&owner=`);
         setPosts(data);
         setHasLoaded(true);
       } catch (err) {
@@ -53,29 +58,45 @@ function FilterPosts({ message, filter = "" }) {
     const timer = setTimeout(() => {
       fetchPosts();
     }, 1000);
-    return () => clearTimeout(timer);
-  }, [filter, query, pathname]);
+
+    return () => {
+      clearTimeout(timer);
+    };
+  }, [filterData]);
+
+  const handleChange = (event) => {
+    setPosts({
+      ...posts,
+      [event.target.name]: event.target.value,
+    });
+  };
 
   return (
     <Container className="">
-      <Form onSubmit={(event) => event.preventDefault()}>
+       <Form onSubmit={(event) => event.preventDefault()}>
         <Form.Control
           value={query}
-          onChange={(event) => setQuery(event.target.value)}
+          onChange={(event) =>{
+            setFilterData({
+              ...filterData,
+              [event.target.name]: event.target.value,
+            })}}
+          name="query"
           type="text"
           placeholder="Search Post"
         />
-      </Form>
-
-      <Form onSubmit={handleSubmit}>
         <Row>
           <Col>
             <Form.Control
               as="select"
               name="language"
               value={language}
-              onChange={(event) => setLanguage(event.target.value)}
-            >
+              onChange={(event) =>{
+                setFilterData({
+                  ...filterData,
+                  [event.target.name]: event.target.value,
+                })}}
+              >
               <option value="">Select a language</option>
               <option value="English">English</option>
               <option value="Spanish">Spanish</option>
@@ -96,8 +117,12 @@ function FilterPosts({ message, filter = "" }) {
               as="select"
               name="age"
               value={age}
-              onChange={(event) => setAge(event.target.value)}
-            >
+              onChange={(event) =>{
+                setFilterData({
+                  ...filterData,
+                  [event.target.name]: event.target.value,
+                })}}
+              >
               <option value="">select an age group</option>
               <option value="4-7">4-7</option>
               <option value="7-11">7-11</option>
@@ -111,8 +136,12 @@ function FilterPosts({ message, filter = "" }) {
               as="select"
               name="level"
               value={level}
-              onChange={(event) => setLevel(event.target.value)}
-            >
+              onChange={(event) =>{
+                setFilterData({
+                  ...filterData,
+                  [event.target.name]: event.target.value,
+                })}}
+              >
               <option value="">Select a level</option>
               <option value="beginners">beginners</option>
               <option value="intermediate">intermediate</option>

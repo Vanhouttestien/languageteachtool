@@ -3,8 +3,7 @@ import styles from "../../styles/Post.module.css";
 import { useCurrentUser } from "../../contexts/CurrentUserContext";
 import {
   Button,
-  Card,
-  CardDeck,
+
   Col,
   Container,
   ListGroup,
@@ -16,6 +15,7 @@ import {
 import { axiosRes } from "../../api/axiosDefault";
 import { Link, useHistory } from "react-router-dom";
 import { MoreDropdown } from "../../components/MoreDropDown";
+import { useProfileData } from "../../contexts/ProfileDataContext";
 
 const Post = (props) => {
   const {
@@ -30,7 +30,9 @@ const Post = (props) => {
     updated_at,
     postPage,
     upload,
+    profile_id, 
   } = props;
+
 
   const currentUser = useCurrentUser();
   const is_owner = currentUser?.username === owner;
@@ -38,7 +40,16 @@ const Post = (props) => {
 
   const handleEdit = async () => {
     history.push(`/posts/${id}/edit`);
+
   };
+
+  function handleClick(event) { 
+    
+    console.log(profile_id)
+    console.log(props)  
+    
+  } 
+
 
   const handleDelete = async () => {
     try {
@@ -54,7 +65,7 @@ const Post = (props) => {
       <Row className={styles.TitleRow}>
         <Col xs={12} md={8}>
           <div className={styles.CardTitle}>{title}</div>
-          <div><Link to={`/profiles/${id}/`}>{owner}</Link></div>
+          <div><Link to={`/profiles/${profile_id}`}>{owner}</Link></div> 
         </Col>
         <Col xs={6} md={4} className="d-flex align-top">
           {is_owner && postPage && (
@@ -77,7 +88,7 @@ const Post = (props) => {
           </Container>
         </Col>
         <Col className="d-flex align-middle">
-          <a href={upload}><Button className={styles.Button}>See download</Button></a>
+          <a href={upload} target="_blank" ><Button className={styles.Button}>Open file</Button></a>
         </Col>
       </Row>
     </Container>

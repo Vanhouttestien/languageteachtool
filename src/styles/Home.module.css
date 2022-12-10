@@ -1,0 +1,36 @@
+@import url('https://fonts.googleapis.com/css2?family=Lato&family=Playfair+Display&family=Roboto+Mono:wght@300&family=Work+Sans:wght@300&display=swap'); 
+
+
+/* Hero Image homepage*/
+.Jumbotron{
+    background-image: url(https://res.cloudinary.com/ds6jpxpzy/image/upload/e_brightness_hsb:-80/v1670443278/teacher-3765909_1920_ftf5f2.jpg);
+    background-size: cover;
+    background-position: center;
+    position: absolute;
+    left: 0;
+    right: 0;
+    top: 0; 
+    min-height: 100%;
+
+}
+
+h1{
+    color: white; 
+    font-family: 'Roboto Mono', sans-serif;
+    font-size: 3rem;
+    font-weight: 100;
+}
+p{
+    color: white;
+}
+
+.Center{
+    margin: auto;
+    width: 60%;
+    padding: 10px;
+    text-align: center;
+    position: relative;
+    top: 30vh;
+
+}
+

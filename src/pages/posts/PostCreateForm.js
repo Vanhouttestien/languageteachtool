@@ -73,10 +73,13 @@ function PostCreateForm() {
     <Form className={styles.Form} onSubmit={handleSubmit}>
       <Jumbotron className={styles.Jumbotron}>
         <Container>
-          <h1>Share your teaching resources</h1>
+          <h1>Share</h1>
+          <p>Share your teaching materials</p> 
           <p>
             Add a file and share your language teaching materials with others.
           </p>
+          <hr />
+          
         </Container>
       </Jumbotron>
       <Container className={styles.Formitems}>

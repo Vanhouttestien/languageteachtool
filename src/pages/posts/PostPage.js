@@ -5,27 +5,25 @@ import Post from './Post';
 
 function PostPage() {
     const { id } = useParams();
-    const [post, setPost] = useState({results: [] });
+    const [post, setPost] = useState();
 
     useEffect(() => {
-        const handleMount = async () => {
+        const fetchPost = async () => {
             try {
-                const [{data: post}] = await Promise.all([
-                    axiosReq.get(`/posts/${id}`)
-                ])
-                setPost({results: [post]})
+                const {data: post} = await axiosReq.get(`/posts/${id}`)
+                setPost(post)
                 console.log(post)
              } catch (err) {
                 console.log(err)
             }
         }
-        handleMount();
+        fetchPost();
     }, [id])
 
   return (
-    <>
-        <Post {...post.results[0]} setPosts={setPost} postPage />
-    </>
+   
+        <Post {...post} setPosts={setPost}  />
+   
     
   )
 }

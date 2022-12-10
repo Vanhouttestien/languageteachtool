@@ -1,5 +1,5 @@
 import React, { useEffect, useRef, useState } from "react";
-import styles from "../../styles/Post.module.css";
+import styles from "../../styles/Profile.module.css";
 import { useCurrentUser } from "../../contexts/CurrentUserContext";
 import {
   Button,
@@ -18,7 +18,6 @@ import { useHistory } from "react-router-dom";
 import { MoreDropdown } from "../../components/MoreDropDown";
 import { useParams } from "react-router-dom/cjs/react-router-dom.min";
 import ProfilePage from "./ProfilePage";
-import { rest } from "msw";
 
 function Profile() {
   const { id } = useParams();
@@ -30,13 +29,6 @@ function Profile() {
     occupation: "",
     about_me: "",
   });
-
-  // function languages(language, language2, language3) {
-  //   {language == "None" && " "} 
-  //   {language2 == "None" && " "} 
-  //   {language3 == "None" && " "} 
-  //   return language, language2, language3
-  // }
 
   const { owner, language, language2, language3, occupation, about_me } =
     profileData;
@@ -72,22 +64,58 @@ function Profile() {
   };
 
   return (
-    <Container>
-      <div>
-       <h1>Profile page</h1>
-       {is_owner && ProfilePage && (
-            <MoreDropdown handleEdit={handleEdit} handleDelete={handleDelete} />
-          )}
-       <h2>{owner}</h2>
-      </div>
-      <div>language: 
-        {language === "None"? " " : language}
-        {language2 === "None"?  " " : language2}
-        {language3 === "None"?  " " : language3} </div>
-      <div>occupation: {occupation}</div>
-      <div>about me: {about_me}</div>
-    </Container>
-    //  <post {...post.results[0]} setPosts={setPost} postPage />
+    <>
+      <Container className="row vh-100">
+        <Card
+          className="card bg-light mb- col-sm-12 my-auto justify-content-center align-items-center "
+          style={{ width: "18rem" }}
+        >
+          <Card.Body>
+
+
+
+
+
+            <span className="float-right">
+              {" "}
+              {is_owner && ProfilePage && (
+                <MoreDropdown
+                  handleEdit={handleEdit}
+                  handleDelete={handleDelete}
+                />
+              )}
+            </span>
+            <Card.Title>
+              <h2>{owner}</h2>{" "}
+            </Card.Title>
+            <hr />
+            <Card.Text>
+              <Container>
+                <Row>
+                  <Col>
+                    <img
+                      src="https://res.cloudinary.com/ds6jpxpzy/image/upload/v1670678336/school-307641_1280_bw6po4.png"
+                      className="img-thumbnail"
+                      alt=""
+                    />
+                  </Col>
+                  <Col className={styles.Textcard}>
+                    <div>about me: {about_me}</div>
+                    <div>
+                      language(s):
+                      {language === "None" ? " " : language}
+                      {language2 === "None" ? " " : language2}
+                      {language3 === "None" ? " " : language3}{" "}
+                    </div>
+                    <div>occupation: {occupation}</div>
+                  </Col>
+                </Row>
+              </Container>
+            </Card.Text>
+          </Card.Body>
+        </Card>
+      </Container>
+    </>
   );
 }
 
