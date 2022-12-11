@@ -1,17 +1,11 @@
-import React, { useEffect, useRef, useState } from "react";
+import React, { useEffect, useState } from "react";
 import styles from "../../styles/Profile.module.css";
 import { useCurrentUser } from "../../contexts/CurrentUserContext";
 import {
-  Button,
   Card,
-  CardDeck,
   Col,
   Container,
-  ListGroup,
-  ListGroupItem,
-  OverlayTrigger,
   Row,
-  Tooltip,
 } from "react-bootstrap";
 import { axiosReq, axiosRes } from "../../api/axiosDefault";
 import { useHistory } from "react-router-dom";
@@ -70,8 +64,7 @@ function Profile() {
     <>
       <Container className="row pb-5">
         <Card
-          className="card text-dark bg-light mb- col-sm-12 my-auto justify-content-center align-items-center "
-          style={{ width: "18rem" }}
+          className="cardjustify-content-center align-items-center w-100 p-0"
         >
           <Card.Body>
             <span className="float-right">
@@ -84,9 +77,9 @@ function Profile() {
               )}
             </span>
             <Card.Title>
-              <h2 className="tx-datext-dark">{owner}</h2>{" "}
+              <h2 className="text-dark">{owner}</h2>{" "}
             </Card.Title>
-            <hr />
+            <hr className="border-dark" />
             <Card.Text>
               <Container>
                 <Row>
@@ -98,14 +91,14 @@ function Profile() {
                     />
                   </Col>
                   <Col className={styles.Textcard}>
-                    <div>about me: {about_me}</div>
-                    <div>
-                      language(s):
-                      {language === "None" ? " " : language}
-                      {language2 === "None" ? " " : language2}
-                      {language3 === "None" ? " " : language3}{" "}
+                    <div className="text-dark"><span className="font-weight-bold">about me:</span> {about_me}</div>
+                    <div className="text-dark">
+                    <span className="font-weight-bold">language(s):</span>
+                     <p className="text-dark ml-5">{language === "None" ? " " : language} </p> 
+                     <p className="text-dark ml-5">{language2 === "None" ? " " : language2}</p>
+                    <p className="text-dark ml-5">{language3 === "None" ? " " : language3}</p>
                     </div>
-                    <div>occupation: {occupation}</div>
+                    <div className="text-dark"><span className="font-weight-bold">occupation:</span> {occupation}</div>
                   </Col>
                 </Row>
               </Container>

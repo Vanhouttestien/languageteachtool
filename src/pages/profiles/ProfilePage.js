@@ -24,9 +24,6 @@ function ProfilePage() {
                 ]);
                 setProfile({results: [profile]})
                 setProfilePosts(profilePosts)
-                console.log(profile)
-                console.log(profilePosts)
-                console.log(profilePosts.results.length)
              } catch (err) {
                 console.log(err)
             }
@@ -57,9 +54,12 @@ function ProfilePage() {
   return (
     <>
         <Profile {...profile.results[0]} setProfile={setProfile} ProfilePage />
-        
-        <h2>Posts: </h2>
+      <div >
+        <h2 className="text-light">Posts: </h2>
         {mainProfilePosts}
+        <br/>
+        <br/>
+        </div>
 
     </>
   )

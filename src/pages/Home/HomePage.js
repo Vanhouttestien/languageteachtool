@@ -18,13 +18,13 @@ const HomePage = () => {
      <p>To find and share materials you need to be loggedin. Loggin or create an account</p> 
       <Link
         to="/signin">
-          <Button variant="primary"> Sign in</Button>
+          <Button variant="primary" className="m-5 px-2"> Sign in</Button>
        
       </Link>
       
       <Link
         to="/signup">
-        <Button variant="primary"> Sign up</Button>
+        <Button variant="primary" className="m-2"> Sign up</Button>
       </Link>
   </>
   return (

@@ -200,7 +200,7 @@ function PostCreateForm() {
         ))}
           </Col>
         </Row>
-        <Button variant="success" type="submit">
+        <Button className="px-4" type="submit">
           Submit
         </Button>
         {errors.non_field_errors?.map((message, idx) => (

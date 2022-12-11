@@ -4,24 +4,23 @@ import Container from "react-bootstrap/Container";
 
 import styles from "../../styles/PostsPage.module.css";
 
-import { Button, Jumbotron, Row } from "react-bootstrap";
+import { Jumbotron } from "react-bootstrap";
 import FilterPosts from "../../components/FilterPosts";
 
-function PostsPage({ message, filter = "" }) {
-  
+function PostsPage() {
   return (
     <Container className="">
       <Jumbotron className={styles.Jumbotron}>
-        <h1>Find Teaching materials</h1>
-        <p>
-          We have teaching materials in different languages and for different age and levels.
+        <h1 className="d-flex justify-content-center mt-5 p-2">Find Teaching materials</h1>
+        <p className="d-flex justify-content-center">
+          We have teaching materials in different languages and for different
+          age and levels.
         </p>
-        <p>
-        Didn't find what your looking for? New materials are added every day! 
+        <p className="d-flex justify-content-center">
+          Didn't find what your looking for? New materials are added every day!
         </p>
-        <hr />
       </Jumbotron>
-      <FilterPosts/>
+      <FilterPosts />
     </Container>
   );
 }

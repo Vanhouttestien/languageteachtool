@@ -33,9 +33,24 @@ function ProfileEditForm() {
     const handleMount = async () => {
       try {
         const { data } = await axiosReq.get(`/profiles/${id}/`);
-        const { owner, occupation, language, language2, language3, about_me, is_owner } = data;
+        const {
+          owner,
+          occupation,
+          language,
+          language2,
+          language3,
+          about_me,
+          is_owner,
+        } = data;
         is_owner
-          ? setProfileData({ owner, occupation, language, language2, language3, about_me })
+          ? setProfileData({
+              owner,
+              occupation,
+              language,
+              language2,
+              language3,
+              about_me,
+            })
           : history.push("/");
       } catch (err) {
         console.log(err);
@@ -50,7 +65,6 @@ function ProfileEditForm() {
       [event.target.name]: event.target.value,
     });
   };
-
 
   const handleSubmit = async (event) => {
     event.preventDefault();
@@ -74,16 +88,16 @@ function ProfileEditForm() {
   };
 
   return (
-    <>
-<Form className={styles.Form} onSubmit={handleSubmit}>
-      <Jumbotron className={styles.Jumbotron}>
-        <Container>
-          <h1>Edit your profile</h1>
-        </Container>
-      </Jumbotron>
-      <Link to={`/profiles/${id}/edit/password`}>
-        <Button>change password</Button>
-      </Link>
+    <> <Jumbotron className={styles.Jumbotron}>
+    <Container>
+      <h1>Edit your profile</h1>
+    </Container>
+  </Jumbotron>
+
+      <Form className={`p-5 ${styles.Form}`} onSubmit={handleSubmit}>
+        <Link className="d-flex justify-content-end" to={`/profiles/${id}/edit/password`}>
+          <Button variant="danger px-2" className="btn-lg">change password</Button>
+        </Link>
         <Form.Group>
           <Form.Label>occupation</Form.Label>
           <Form.Control
@@ -100,7 +114,7 @@ function ProfileEditForm() {
           </Alert>
         ))}
 
-<Form.Group>
+        <Form.Group>
           <Form.Label>About me</Form.Label>
           <Form.Control
             as="textarea"
@@ -116,7 +130,6 @@ function ProfileEditForm() {
             {message}
           </Alert>
         ))}
-
 
         <Row>
           <Col>
@@ -195,14 +208,15 @@ function ProfileEditForm() {
             </Form.Group>
           </Col>
         </Row>
-        <Button variant="success" type="submit">
-          Submit
-        </Button>
-        <Button
-              onClick={() => history.goBack()}
-            >cancel
-              </Button>
-    </Form>
+        <Row className="d-flex justify-content-center">
+          <Button className="m-5 px-4 btn-lg" type="submit">
+            Submit
+          </Button>
+          <Button className="m-5 px-4 btn-lg" onClick={() => history.goBack()}>
+            cancel
+          </Button>
+        </Row>
+      </Form>
     </>
   );
 }

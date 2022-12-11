@@ -22,7 +22,7 @@ function FilterPosts() {
 
   const { query, language, age, level } = filterData;
   const [hasLoaded, setHasLoaded] = useState(false);
-  
+
   useEffect(() => {
     const fetchPosts = async () => {
       try {
@@ -47,13 +47,14 @@ function FilterPosts() {
 
   return (
     <Container className="">
-      <Form onSubmit={(event) => event.preventDefault()}>
+      <Form onSubmit={(event) => event.preventDefault()} className="bg-dark p-5">
         <Form.Group as={Row}>
           <Form.Label>
             <i class="fa-solid fa-magnifying-glass"></i>
           </Form.Label>
-          <Col>
+          <Col className="pr-0">
             <Form.Control
+            className="w-75"
               value={query}
               onChange={(event) => {
                 setFilterData({
@@ -66,13 +67,14 @@ function FilterPosts() {
               placeholder=" Search Post"
             />
           </Col>
-          {/* </Form.Group>
-        <Form.Group as={Row}> */}
+      </Form.Group>
+        <Form.Group as={Row}> 
           <Form.Label>
           <i class="fa-solid fa-filter"></i>
           </Form.Label>
           <Col className="pr-0">
             <Form.Control
+            className="w-75"
               as="select"
               name="language"
               value={language}
@@ -98,9 +100,15 @@ function FilterPosts() {
               <option value="Russian">Russian</option>
             </Form.Control>
           </Col>
+          </Form.Group>
 
-          <Col className="pr-0 pl-0">
+          <Form.Group as={Row}> 
+          <Form.Label>
+          <i class="fa-solid fa-filter"></i>
+          </Form.Label>
+          <Col className="pr-0">
             <Form.Control
+            className="w-75"
               as="select"
               name="age"
               value={age}
@@ -118,9 +126,16 @@ function FilterPosts() {
               <option value="14-17">14-17</option>
               <option value="18+">18+</option>
             </Form.Control>
-          </Col>
-          <Col className="pr-0 pl-0">
+          </Col> 
+          </Form.Group>
+
+          <Form.Group as={Row}> 
+          <Form.Label>
+          <i class="fa-solid fa-filter"></i>
+          </Form.Label>
+          <Col className="pr-0">
             <Form.Control
+            className="w-75"
               as="select"
               name="level"
               value={level}
@@ -138,8 +153,8 @@ function FilterPosts() {
             </Form.Control>
           </Col>
         </Form.Group>
-        >
       </Form>
+      <hr className="border-light"/>
       {hasLoaded ? (
         <>
           {posts.results.length ? (
