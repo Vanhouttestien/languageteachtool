@@ -12,6 +12,7 @@ import {
 } from "react-bootstrap";
 import { useHistory } from "react-router-dom";
 import { axiosReq } from "../../api/axiosDefault";
+import { useRedirect } from "../../hooks/useRedirect";
 import styles from "../../styles/PostCreateForm.module.css";
 
 function PostCreateForm() {
@@ -24,6 +25,7 @@ function PostCreateForm() {
     age: "",
     level: "",
   });
+  useRedirect('loggedOut')
 
   const { title, description, upload, language, age, level } = postData;
 
@@ -114,14 +116,22 @@ function PostCreateForm() {
             {message}
           </Alert>
         ))}
-        <Form.Group>
+
+
+      <input type="file" 
+          name="upload"
+          accept="image/jpeg,image/png,image/gif, application/pdf"
+          onChange={handleChangeUpload}
+            ref={uploadInput}
+            />
+        {/* <Form.Group>
           <Form.Label className="d-none">upload file</Form.Label>
           <Form.File
             did="upload"
             onChange={handleChangeUpload}
             ref={uploadInput}
           />
-        </Form.Group>
+        </Form.Group> */}
         {errors.upload?.map((message, idx) => (
           <Alert variant="warning" key={idx}>
             {message}
@@ -200,7 +210,7 @@ function PostCreateForm() {
         ))}
           </Col>
         </Row>
-        <Button className="px-4" type="submit">
+        <Button  variant="primary" className="px-4" type="submit">
           Submit
         </Button>
         {errors.non_field_errors?.map((message, idx) => (

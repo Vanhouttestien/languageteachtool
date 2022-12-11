@@ -16,9 +16,7 @@ function PostsPage() {
           We have teaching materials in different languages and for different
           age and levels.
         </p>
-        <p className="d-flex justify-content-center">
-          Didn't find what your looking for? New materials are added every day!
-        </p>
+
       </Jumbotron>
       <FilterPosts />
     </Container>

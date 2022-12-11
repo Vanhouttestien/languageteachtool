@@ -15,7 +15,6 @@ import ProfileEditForm from "./pages/profiles/ProfileEditForm";
 
 import UserPasswordForm from "./pages/profiles/UserPasswordForm";
 import HomePage from "./pages/Home/HomePage";
-import Footer from "./components/Footer";
 
 function App() {
   const currentUser = useSetCurrentUser();
