@@ -3,11 +3,8 @@ import axios from "axios";
 import { Form, Button, Col, Row, Container, Alert } from "react-bootstrap";
 import { Link, useHistory } from "react-router-dom";
 import { useSetCurrentUser } from "../../contexts/CurrentUserContext";
-import styles from "../../styles/Post.module.css";
 import { useRedirect } from "../../hooks/useRedirect";
 import { setTokenTimestamp } from "../../utils/utils";
-
-
 
 function SignInForm() {
   const setCurrentUser = useSetCurrentUser();
@@ -24,7 +21,6 @@ function SignInForm() {
   const history = useHistory();
   const handleSubmit = async (event) => {
     event.preventDefault();
-
     try {
       const { data } = await axios.post("/dj-rest-auth/login/", signInData);
       setCurrentUser(data.user);
@@ -66,7 +62,7 @@ function SignInForm() {
               </Alert>
             ))}
 
-<Form.Group controlId="password">
+            <Form.Group controlId="password">
               <Form.Label className="d-none">Password</Form.Label>
               <Form.Control
                 type="password"
@@ -91,16 +87,15 @@ function SignInForm() {
               </Alert>
             ))}
           </Form>
-        </Col>
-        <Container>
           <Link to="/signup">
             Don't have an account? <span>Sign up now!</span>
           </Link>
-        </Container>
+        </Col>
+
         <Col></Col>
       </Row>
     </Container>
   );
-};
+}
 
 export default SignInForm;
