@@ -140,40 +140,49 @@ As a user I can keep scrolling through all the posts, so I don’t have to click
 <img src="https://res.cloudinary.com/ds6jpxpzy/image/upload/v1670856650/listpostpage_tf3d78.jpg" alt="Screen shot post list  Diagram" width="300px">
 
 9. Profile Page
+
 <img src="https://res.cloudinary.com/ds6jpxpzy/image/upload/v1670856649/ownprofilepage_vrzjux.jpg" alt="profile page" width="300px">
 
 10. 404 page 
 
 When the page is not found the user gets redirected to the 404 page. 
 
+
 <img src="https://res.cloudinary.com/ds6jpxpzy/image/upload/v1670857525/404page_emornn.jpg" alt="screenshot 404 page" width="300px">
 
 # Testing 
 ## Manual testing
+
 ## Validator testing
-ES Lint din't show any errors if the following rules where added: 
-- "react/prop-types": 0, 
-- "react/no-unescaped-entities": 0, 
-- "react/no-children-prop": 0, 
-- "react/no-unescaped-entities": 0,  
-- "react/display-name": "off"
+
+JSX and JavaScript: 
+- ES Lint din't show any errors if the following rules where added: 
+    - "react/prop-types": 0, 
+    - "react/no-unescaped-entities": 0, 
+    - "react/no-children-prop": 0, 
+    - "react/no-unescaped-entities": 0,  
+    - "react/display-name": "off"
+
+CSS: 
+- No errors were found by the official Jigsaw validator
+<img src="https://res.cloudinary.com/ds6jpxpzy/image/upload/v1670856649/W3C_s0nhfz.jpg" alt="css VALIDATOR" width="300px">
 
 # Deployment
 # Credits  
+## images
 
-## Frameworks, Libraries & 
+picture home page: 
+Image Homepage: [Image by Escola Espai from Pixabay](https://pixabay.com/photos/class-classroom-professor-pupil-377117/)
+Image postspage: [Image by Pexels from Pixabay ](https://pixabay.com/photos/concept-man-papers-person-plan-1868728/)
+Image post upload form: [Image by Wokandapix from Pixabay ](https://pixabay.com/photos/teach-education-school-class-1968076/)
+
+
+
 
 upload form picture: https://pixabay.com/photos/student-typing-keyboard-text-woman-849822/
 Image by StartupStockPhotos from Pixabay 
 
-https://pixabay.com/photos/teacher-property-plant-and-teaching-3765909/
-Image by steveriot1 from Pixabay 
-
-https://pixabay.com/photos/class-classroom-professor-pupil-377117/
-Image by Escola Espai from Pixabay 
-
-
-
-https://pixabay.com/photos/concept-man-papers-person-plan-1868728/ image postspage Image by Pexels from Pixabay 
 
 image profile page: https://pixabay.com/vectors/school-teacher-maths-307641/
+## code
+## others
