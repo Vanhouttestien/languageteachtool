@@ -1,7 +1,12 @@
 import React, { useState } from "react";
 import axios from "axios";
 
-import { Form, Button, Col, Row, Container, Alert } from "react-bootstrap";
+import Form from "react-bootstrap/Form";
+import Button from "react-bootstrap/Button";
+import Col from "react-bootstrap/Col";
+import Row from "react-bootstrap/Row";
+import Container from "react-bootstrap/Container";
+import Alert from "react-bootstrap/Alert";
 import { useHistory } from "react-router-dom";
 import { useRedirect } from "../../hooks/useRedirect";
 
@@ -41,7 +46,7 @@ const SignUpForm = () => {
   return (
     <Container>
       <Row className=" vh-100 d-flex align-items-center justify-content-center">
-        <Col className="col-md-6" >
+        <Col className="col-md-6">
           <h1>Sign Up</h1>
           <Form onSubmit={handleSubmit}>
             <Form.Group controlId="username">

@@ -1,13 +1,10 @@
 import React from "react";
 import styles from "../../styles/Post.module.css";
 import { useCurrentUser } from "../../contexts/CurrentUserContext";
-import {
-  Button,
-
-  Col,
-  Container,
-  Row,
-} from "react-bootstrap";
+import Button from "react-bootstrap/Button";
+import Col from "react-bootstrap/Col";
+import Container from "react-bootstrap/Container";
+import Row from "react-bootstrap/Row";
 import { axiosRes } from "../../api/axiosDefault";
 import { Link, useHistory } from "react-router-dom";
 import { MoreDropdown } from "../../components/MoreDropDown";

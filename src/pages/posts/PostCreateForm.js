@@ -1,15 +1,13 @@
 import React from "react";
 import { useRef } from "react";
 import { useState } from "react";
-import {
-  Form,
-  Button,
-  Alert,
-  Jumbotron,
-  Container,
-  Row,
-  Col,
-} from "react-bootstrap";
+import Form from "react-bootstrap/Form";
+import Button from "react-bootstrap/Button";
+import Alert from "react-bootstrap/Alert";
+import Jumbotron from "react-bootstrap/Jumbotron";
+import Container from "react-bootstrap/Container";
+import Row from "react-bootstrap/Row";
+import Col from "react-bootstrap/Col";
 import { useHistory } from "react-router-dom";
 import { axiosReq } from "../../api/axiosDefault";
 import { useRedirect } from "../../hooks/useRedirect";
@@ -76,7 +74,7 @@ function PostCreateForm() {
       <Jumbotron className={styles.Jumbotron}>
         <Container>
           <h1>Share</h1>
-          <p>Share your teaching materials</p> 
+          <p>Share your teaching materials.</p> 
           <p>
             Add a file and share your language teaching materials with others.
           </p>

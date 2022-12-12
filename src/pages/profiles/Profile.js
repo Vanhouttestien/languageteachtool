@@ -1,7 +1,10 @@
 import React, { useEffect, useState } from "react";
 import styles from "../../styles/Profile.module.css";
 import { useCurrentUser } from "../../contexts/CurrentUserContext";
-import { Card, Col, Container, Row } from "react-bootstrap";
+import Col from "react-bootstrap/Col";
+import Card from "react-bootstrap/Card";
+import Container from "react-bootstrap/Container";
+import Row from "react-bootstrap/Row";
 import { axiosReq, axiosRes } from "../../api/axiosDefault";
 import { useHistory } from "react-router-dom";
 import { MoreDropdown } from "../../components/MoreDropDown";

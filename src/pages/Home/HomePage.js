@@ -1,5 +1,6 @@
 import React from "react";
-import { Button, Container, Jumbotron } from "react-bootstrap";
+import Button from "react-bootstrap/Button";
+import Jumbotron from "react-bootstrap/Jumbotron";
 import { Link } from "react-router-dom";
 import { useCurrentUser } from "../../contexts/CurrentUserContext";
 import styles from "../../styles/Home.module.css";

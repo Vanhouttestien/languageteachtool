@@ -1,17 +1,19 @@
 import React, { useEffect, useState } from "react";
-
 import Form from "react-bootstrap/Form";
 import Container from "react-bootstrap/Container";
-
-import { Col, Row } from "react-bootstrap";
+import Col from "react-bootstrap/Col";
+import  Row  from "react-bootstrap/Row";
 import { fetchMoreData } from "../utils/utils";
 import InfiniteScroll from "react-infinite-scroll-component";
 import { axiosReq } from "../api/axiosDefault";
 import Post from "../pages/posts/Post";
 import Asset from "./Asset";
+import { useCurrentUser } from "../contexts/CurrentUserContext";
+
 
 function FilterPosts() {
   const [posts, setPosts] = useState({ results: [] });
+  const currentUser = useCurrentUser();
 
   const [filterData, setFilterData] = useState({
     query: "",
@@ -43,7 +45,7 @@ function FilterPosts() {
     return () => {
       clearTimeout(timer);
     };
-  }, [filterData]);
+  }, [filterData, currentUser]);
 
   return (
     <Container className="">

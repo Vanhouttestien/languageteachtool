@@ -1,15 +1,13 @@
 import React, { useEffect } from "react";
 import { useRef } from "react";
 import { useState } from "react";
-import {
-  Form,
-  Button,
-  Alert,
-  Jumbotron,
-  Container,
-  Row,
-  Col,
-} from "react-bootstrap";
+import Form from "react-bootstrap/Form";
+import Button from "react-bootstrap/Button";
+import Alert from "react-bootstrap/Alert";
+import Jumbotron from "react-bootstrap/Jumbotron";
+import Container from "react-bootstrap/Container";
+import Row from "react-bootstrap/Row";
+import Col from "react-bootstrap/Col";
 import { useHistory, useParams } from "react-router-dom";
 import { axiosReq } from "../../api/axiosDefault";
 import styles from "../../styles/PostCreateForm.module.css";

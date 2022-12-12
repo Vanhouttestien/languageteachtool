@@ -22,7 +22,7 @@ const NavBar = () => {
       setCurrentUser(null);
       removeTokenTimestamp();
     } catch (err) {
-      console.log(err);
+      // console.log(err);
     }
   };
 
@@ -32,7 +32,7 @@ const NavBar = () => {
       activeClassName={styles.Active}
       to="/posts/create"
     >
-      Share material
+      Share materials
     </NavLink>
   );
   const loggedInIcons = (
