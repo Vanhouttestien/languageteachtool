@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect } from "react";
 import { Navbar, Nav, Badge } from "react-bootstrap";
 import styles from "../styles/NavBar.module.css";
 import { NavLink } from "react-router-dom";
@@ -84,7 +84,7 @@ const NavBar = () => {
     >
       <NavLink to="/">
         <Navbar.Brand>
-          The teachers Lounge
+          The Teachers Lounge
         </Navbar.Brand>
       </NavLink>
       <Navbar.Toggle ref={ref} aria-controls="basic-navbar-nav" onClick={() => setExpanded(!expanded)} />

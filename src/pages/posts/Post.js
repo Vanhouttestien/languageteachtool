@@ -6,16 +6,11 @@ import {
 
   Col,
   Container,
-  ListGroup,
-  ListGroupItem,
-  OverlayTrigger,
   Row,
-  Tooltip,
 } from "react-bootstrap";
 import { axiosRes } from "../../api/axiosDefault";
 import { Link, useHistory } from "react-router-dom";
 import { MoreDropdown } from "../../components/MoreDropDown";
-import { useProfileData } from "../../contexts/ProfileDataContext";
 
 const Post = (props) => {
   const {
@@ -28,7 +23,6 @@ const Post = (props) => {
     level,
     created_at,
     updated_at,
-    postPage,
     upload,
     profile_id, 
   } = props;
@@ -47,7 +41,7 @@ const Post = (props) => {
       await axiosRes.delete(`/posts/${id}/`);
       history.goBack();
     } catch (err) {
-      console.log(err);
+      // console.log(err);
     }
   };
 
@@ -80,7 +74,7 @@ const Post = (props) => {
           </Container>
         </Col>
         <Col className="d-flex align-middle">
-          <a href={upload} target="_blank" ><Button className={styles.Button}>Open file</Button></a>
+          <a href={upload} target="_blank" rel="noreferrer" ><Button className={styles.Button}>Open file</Button></a>
         </Col>
       </Row>
     </Container>

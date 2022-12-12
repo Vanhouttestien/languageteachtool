@@ -1,8 +1,7 @@
-import { createContext, useContext, useEffect, useState } from "react";
+import React, { createContext, useContext, useEffect, useState } from "react";
 import { axiosReq } from "../api/axiosDefault";
 
 import { useCurrentUser } from "../contexts/CurrentUserContext";
-
 
 const ProfileDataContext = createContext();
 const SetProfileDataContext = createContext();
@@ -17,20 +16,16 @@ export const ProfileDataProvider = ({ children }) => {
 
   const currentUser = useCurrentUser();
 
-
- 
   useEffect(() => {
     const handleMount = async () => {
       try {
-        const { data } = await axiosReq.get(
-          "/profiles/"
-        );
+        const { data } = await axiosReq.get("/profiles/");
         setProfileData((prevState) => ({
           ...prevState,
           popularProfiles: data,
         }));
       } catch (err) {
-        console.log(err);
+        // console.log(err);
       }
     };
 
@@ -39,9 +34,7 @@ export const ProfileDataProvider = ({ children }) => {
 
   return (
     <ProfileDataContext.Provider value={profileData}>
-      <SetProfileDataContext.Provider
-        value={{ setProfileData}}
-      >
+      <SetProfileDataContext.Provider value={{ setProfileData }}>
         {children}
       </SetProfileDataContext.Provider>
     </ProfileDataContext.Provider>

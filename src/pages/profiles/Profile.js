@@ -29,7 +29,7 @@ function Profile() {
         const { data: profile } = await axiosReq.get(`/profiles/${id}`);
         setProfileData(profile);
       } catch (err) {
-        console.log(err);
+        // console.log(err);
       }
     };
     fetchProfile();
@@ -48,7 +48,7 @@ function Profile() {
       await axiosRes.delete(`/profiles/${id}/`);
       history.goBack();
     } catch (err) {
-      console.log(err);
+      // console.log(err);
     }
   };
 

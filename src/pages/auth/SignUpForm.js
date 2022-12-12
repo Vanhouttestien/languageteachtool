@@ -1,5 +1,6 @@
-import axios from "axios";
 import React, { useState } from "react";
+import axios from "axios";
+
 import { Form, Button, Col, Row, Container, Alert } from "react-bootstrap";
 import { useHistory } from "react-router-dom";
 import { useRedirect } from "../../hooks/useRedirect";
@@ -32,15 +33,15 @@ const SignUpForm = () => {
       await axios.post("/dj-rest-auth/registration/", signUpData);
       history.push("/signin");
     } catch (err) {
+      // console.log(err);
       setErrors(err.response?.data);
     }
   };
 
   return (
     <Container>
-      <Row>
-        <Col></Col>
-        <Col>
+      <Row className=" vh-100 d-flex align-items-center justify-content-center">
+        <Col className="col-md-6" >
           <h1>Sign Up</h1>
           <Form onSubmit={handleSubmit}>
             <Form.Group controlId="username">
@@ -100,7 +101,6 @@ const SignUpForm = () => {
             ))}
           </Form>
         </Col>
-        <Col></Col>
       </Row>
     </Container>
   );

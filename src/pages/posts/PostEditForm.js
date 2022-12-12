@@ -10,7 +10,7 @@ import {
   Row,
   Col,
 } from "react-bootstrap";
-import { Link, useHistory, useParams } from "react-router-dom";
+import { useHistory, useParams } from "react-router-dom";
 import { axiosReq } from "../../api/axiosDefault";
 import styles from "../../styles/PostCreateForm.module.css";
 
@@ -40,7 +40,7 @@ function PostEditForm() {
           ? setPostData({ title, description, upload, language, age, level })
           : history.push("/");
       } catch (err) {
-        console.log(err);
+        // console.log(err);
       }
     };
 
@@ -82,7 +82,6 @@ function PostEditForm() {
       await axiosReq.put(`/posts/${id}/`, formData);
       history.push(`/posts/${id}`);
     } catch (err) {
-      console.log(err);
       if (err.response?.status !== 401) {
         setErrors(err.response?.data);
       }

@@ -27,6 +27,7 @@ function SignInForm() {
       setTokenTimestamp(data);
       history.goBack();
     } catch (err) {
+      // console.log(err);
       setErrors(err.response?.data);
     }
   };
@@ -39,10 +40,9 @@ function SignInForm() {
   };
 
   return (
-    <Container>
-      <Row>
-        <Col></Col>
-        <Col>
+    <Container className="">
+      <Row className="vh-100 d-flex align-items-center justify-content-center">
+        <Col className="col-md-6">
           <h1>Sign In</h1>
           <Form onSubmit={handleSubmit}>
             <Form.Group controlId="username">
@@ -91,8 +91,6 @@ function SignInForm() {
             Don't have an account? <span>Sign up now!</span>
           </Link>
         </Col>
-
-        <Col></Col>
       </Row>
     </Container>
   );

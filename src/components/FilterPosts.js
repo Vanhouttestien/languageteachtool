@@ -32,7 +32,7 @@ function FilterPosts() {
         setPosts(data);
         setHasLoaded(true);
       } catch (err) {
-        console.log(err);
+        // console.log(err);
       }
     };
     setHasLoaded(false);
@@ -50,7 +50,7 @@ function FilterPosts() {
       <Form onSubmit={(event) => event.preventDefault()} className="bg-dark p-5">
         <Form.Group as={Row}>
           <Form.Label>
-            <i class="fa-solid fa-magnifying-glass"></i>
+            <i className="fa-solid fa-magnifying-glass"></i> 
           </Form.Label>
           <Col className="pr-0">
             <Form.Control
@@ -64,13 +64,13 @@ function FilterPosts() {
               }}
               name="query"
               type="text"
-              placeholder=" Search Post"
+              placeholder=" Search"
             />
           </Col>
       </Form.Group>
         <Form.Group as={Row}> 
           <Form.Label>
-          <i class="fa-solid fa-filter"></i>
+           <i className="fa-solid fa-filter"></i> 
           </Form.Label>
           <Col className="pr-0">
             <Form.Control
@@ -104,7 +104,7 @@ function FilterPosts() {
 
           <Form.Group as={Row}> 
           <Form.Label>
-          <i class="fa-solid fa-filter"></i>
+          <i className="fa-solid fa-filter"></i>
           </Form.Label>
           <Col className="pr-0">
             <Form.Control
@@ -119,7 +119,7 @@ function FilterPosts() {
                 });
               }}
             >
-              <option value="">select an age group</option>
+              <option value="">Select an age group</option>
               <option value="4-7">4-7</option>
               <option value="7-11">7-11</option>
               <option value="11-13">11-13</option>
@@ -131,7 +131,7 @@ function FilterPosts() {
 
           <Form.Group as={Row}> 
           <Form.Label>
-          <i class="fa-solid fa-filter"></i>
+          <i className="fa-solid fa-filter"></i> 
           </Form.Label>
           <Col className="pr-0">
             <Form.Control

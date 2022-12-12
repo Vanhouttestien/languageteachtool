@@ -53,7 +53,6 @@ function ProfileEditForm() {
             })
           : history.push("/");
       } catch (err) {
-        console.log(err);
       }
     };
     handleMount();
@@ -76,11 +75,9 @@ function ProfileEditForm() {
     formData.append("about_me", about_me);
 
     try {
-      console.log(formData);
       await axiosReq.put(`/profiles/${id}/`, formData);
       history.push(`/profiles/${id}`);
     } catch (err) {
-      console.log(err);
       if (err.response?.status !== 401) {
         setErrors(err.response?.data);
       }
@@ -88,15 +85,21 @@ function ProfileEditForm() {
   };
 
   return (
-    <> <Jumbotron className={styles.Jumbotron}>
-    <Container>
-      <h1>Edit your profile</h1>
-    </Container>
-  </Jumbotron>
-
+    <>
+      {" "}
+      <Jumbotron className={styles.Jumbotron}>
+        <Container>
+          <h1>Edit your profile</h1>
+        </Container>
+      </Jumbotron>
       <Form className={`p-5 ${styles.Form}`} onSubmit={handleSubmit}>
-        <Link className="d-flex justify-content-end" to={`/profiles/${id}/edit/password`}>
-          <Button variant="danger px-2" className="btn-lg">change password</Button>
+        <Link
+          className="d-flex justify-content-end"
+          to={`/profiles/${id}/edit/password`}
+        >
+          <Button variant="danger px-2" className="btn-lg">
+            change password
+          </Button>
         </Link>
         <Form.Group>
           <Form.Label>occupation</Form.Label>
